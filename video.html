@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+
+    
+
+    <title>Art Factory HTML CSS Template</title>
+    
+    <script>
+  function videoEnded() {
+    window.confirm("Now lets start the session");
+    if (confirm("please click ok to start")) {
+      window.location.href = "videos_HANA.html";
+} else {
+  txt = "You pressed Cancel!";
+}
+
+    //alert('please click ok if you are ready to start the session');
+}
+
+
+    </script>
+  </head>
+  <body>
+    
+    <video id="videoElement" width ="100%" height="605px" controls autoplay onended="videoEnded()"  >
+      <source id="ss" src="Assets/Hi,%20I%20am%20your%20interviewer,%20are%20you%20ready%20for%20questions.mp4" type='video/mp4'>
+   
+    </video>
+    
+    
+  </body>
+  </html>
