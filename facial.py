@@ -1,7 +1,10 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+from flask import Flask, render_template
 
+app = Flask(__name__, static_folder='Assets')
+#app1 = Flask(__name__)
 import cv2
 import numpy as np
 from keras.models import model_from_json
@@ -15,7 +18,7 @@ import matplotlib.pyplot as plt
 from keras.preprocessing import image
 from keras.preprocessing.image import img_to_array
 from time import sleep
-
+from multiprocessing import Process
 
 
 
@@ -62,9 +65,13 @@ def get_video_type(filename):
         return VIDEO_TYPE[ext]
     return VIDEO_TYPE['avi']  
 
-
+@app.route('/')
+def test():
+   return render_template('videos (2).html')
+@app.route('/test')
 def facial_function():
     #counts
+    #test()
     Angry_count=0     
     Disgust_count=0
     Fear_count=0
@@ -254,8 +261,19 @@ def facial_function():
     plt.savefig('imags/count_report.png')
 
     plt.show()
-       
-facial_function()
+ 
+
+if __name__ == "__main__":
+    app.run(debug=True)
+    # app1.run(debug=True)
+ #   facial_function()
+     #p1= Process(target=app.run(debug=True))
+    # p2= Process(target=facial_function)
+    # p1.start()
+     #p2.start()
+  
+     
+#facial_function()
 
 
 
