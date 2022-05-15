@@ -2,6 +2,8 @@
 # coding: utf-8
 
 import os
+# Keyboard module in Python
+import keyboard  
 import keras
 import numpy as np
 import librosa
@@ -18,7 +20,6 @@ from docx import Document as Document_compose
 from docx2pdf import convert
 from flask import Flask, render_template
 
-app = Flask(__name__, static_folder='Assets')
 my_doc = docx.Document()
 # Initialize variables
 RATE = 24414
@@ -119,19 +120,18 @@ def is_silent(data):
     
     return max(data) < 100
 
-@app.route('/')
-def indext_get():
-    return render_template("videos (2).html")
 
-@app.route('/test1')
 def speech():
+  
+    flag=False
     p1 = modelPredictions(path='SER_model.h5')
     p1.load_model()
     data = array('h', np.random.randint(size = 512, low = 0, high = 500))
+    tic = time.perf_counter()
 # SESSION START
     print("** session started")
  
-    tic = time.perf_counter()
+   
 
     while is_silent(data) == False:
        print("* recording...")
@@ -141,17 +141,26 @@ def speech():
        timesteps = int(RATE / CHUNK * RECORD_SECONDS) # => 339
 
     # Insert frames to 'output.wav'.
-       for i in range(0, timesteps):
+       #for i in range(0, timesteps):
+   
+       while 1: 
+          
             data = array('l', stream.read(CHUNK)) 
             frames.append(data)
-
             wf = wave.open(WAVE_OUTPUT_FILE, 'wb')
             wf.setnchannels(CHANNELS)
             wf.setsampwidth(p.get_sample_size(FORMAT))
             wf.setframerate(RATE)
             wf.writeframes(b''.join(frames))
-
-    
+            
+            if keyboard.is_pressed ("esc")  :
+                flag=True
+               # p1.predictEmotion(file=WAVE_OUTPUT_FILE)  
+                break
+            
+              
+           
+       
        p1.predictEmotion(file=WAVE_OUTPUT_FILE)
     
     # Define the last 2 seconds sequence.
@@ -162,16 +171,20 @@ def speech():
                                                                             frames[-17], frames[-18], frames[-19], frames[-20],
                                                                             frames[-21], frames[-22], frames[-23], frames[-24]),
                                                                             axis =0)) , dtype = 'b')
-       if is_silent(last_frames): # If the last 2 seconds are silent, end the session.
-           break
-
-# SESSION END        
-    toc = time.perf_counter()
-    stream.stop_stream()
-    stream.close()
-    p.terminate()
-    wf.close()
-    print('** session ended')
+        # If the last 2 seconds are silent, end the session.
+      # if is_silent(last_frames):
+       #      pass
+      # 
+    
+# SESSION END 
+       if flag==True :            
+        toc = time.perf_counter()
+        stream.stop_stream()
+        stream.close()
+        p.terminate()
+        wf.close()
+        print('** session ended')
+        break
 
 # Present emotion distribution for the whole session.
     total_predictions_np =  np.mean(np.array(total_predictions).tolist(), axis=0)
@@ -179,15 +192,16 @@ def speech():
     plt.bar(emo_list, total_predictions_np, color = 'indigo')
     plt.ylabel("Mean probabilty (%)")
     plt.title("Session Summary")
-    #plt.show()
+     #plt.show()
     fig.savefig('imags/Session Summary_speech.png')
     print(f"Emotions analyzed for: {(toc - tic):0.4f} seconds")
     my_doc.add_heading('                                       From Audio session we detect this summry:',1)    
     my_doc.add_picture('imags/Session Summary_speech.png')     
     volume(WAVE_OUTPUT_FILE) 
     my_doc.save("report/report_from_session.docx")  
-   # convert("report/report_from_session.docx", "report/report_from_session.pdf")  
-
+    # convert("report/report_from_session.docx", "report/report_from_session.pdf")  
+    
+      
 #def get_report(doc):
  #   doc.save("report/report_from_session.docx")
 def combine_all_docx():
@@ -200,3 +214,4 @@ def combine_all_docx():
     #Save the combined docx with a name
     composer.save("report/combined.docx")     
     convert("report/combined.docx", "report/combined.pdf")  
+#speech()    
