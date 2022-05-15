@@ -184,7 +184,8 @@
                     pause_listening();
                     q = document.getElementById(qs[q_index]);
                     q.addEventListener('ended', listen, false);
-                    q.addEventListener('ended', speech_py, false);
+                    //q.addEventListener('ended', speech_py, false);
+                    
                     //q.addEventListener('ended', transcript, false);
                     // q.myParam="repeat";
                     console.log(qs[q_index]);
@@ -212,6 +213,7 @@
                          if (q_index >= 5) {
                               microphone.mediaStream.getTracks()[0].stop();
                               end();
+                             
                          }
                          document.getElementById("l" + l_index).setAttribute('class', 'hidden');
                          Ask();
@@ -261,6 +263,7 @@
         }
      function playPause() {
           qs=interview_qs(5);
+          speech_py();
           facial_py();
           start();
          

@@ -128,7 +128,7 @@ def volume(debussy_file):
  len(t)
  plt.figure(figsize=(7,8))
  # line colour is red
- plt.axhline(y = 4900, color = 'b', linestyle = 'dashed',label = "threshold of normal volume")  
+ plt.axhline(y = 5000, color = 'b', linestyle = 'dashed',label = "threshold of normal volume")  
  plt.plot(t, sc_debussy, color='r',label = "Intensity of sound")
  plt.xlabel('Time (sec)')
  plt.ylabel('vloume')
@@ -474,13 +474,16 @@ def gaze_blinking_function():
      
 @app.route('/speech')
 def speech():
+      
+    flag=False
     p1 = modelPredictions(path='SER_model.h5')
     p1.load_model()
     data = array('h', np.random.randint(size = 512, low = 0, high = 500))
+    tic = time.perf_counter()
 # SESSION START
     print("** session started")
  
-    tic = time.perf_counter()
+   
 
     while is_silent(data) == False:
        print("* recording...")
@@ -490,17 +493,26 @@ def speech():
        timesteps = int(RATE / CHUNK * RECORD_SECONDS) # => 339
 
     # Insert frames to 'output.wav'.
-       for i in range(0, timesteps):
+       #for i in range(0, timesteps):
+   
+       while 1: 
+          
             data = array('l', stream.read(CHUNK)) 
             frames.append(data)
-
             wf = wave.open(WAVE_OUTPUT_FILE, 'wb')
             wf.setnchannels(CHANNELS)
             wf.setsampwidth(p.get_sample_size(FORMAT))
             wf.setframerate(RATE)
             wf.writeframes(b''.join(frames))
-
-    
+            
+            if keyboard.is_pressed ("esc")  :
+                flag=True
+               # p1.predictEmotion(file=WAVE_OUTPUT_FILE)  
+                break
+            
+              
+           
+       
        p1.predictEmotion(file=WAVE_OUTPUT_FILE)
     
     # Define the last 2 seconds sequence.
@@ -511,16 +523,20 @@ def speech():
                                                                             frames[-17], frames[-18], frames[-19], frames[-20],
                                                                             frames[-21], frames[-22], frames[-23], frames[-24]),
                                                                             axis =0)) , dtype = 'b')
-       if is_silent(last_frames): # If the last 2 seconds are silent, end the session.
-           break
-
-# SESSION END        
-    toc = time.perf_counter()
-    stream.stop_stream()
-    stream.close()
-    p.terminate()
-    wf.close()
-    print('** session ended')
+        # If the last 2 seconds are silent, end the session.
+      # if is_silent(last_frames):
+       #      pass
+      # 
+    
+# SESSION END 
+       if flag==True :            
+        toc = time.perf_counter()
+        stream.stop_stream()
+        stream.close()
+        p.terminate()
+        wf.close()
+        print('** session ended')
+        break
 
 # Present emotion distribution for the whole session.
     total_predictions_np =  np.mean(np.array(total_predictions).tolist(), axis=0)
@@ -528,13 +544,16 @@ def speech():
     plt.bar(emo_list, total_predictions_np, color = 'indigo')
     plt.ylabel("Mean probabilty (%)")
     plt.title("Session Summary")
-    #plt.show()
+     #plt.show()
     fig.savefig('imags/Session Summary_speech.png')
     print(f"Emotions analyzed for: {(toc - tic):0.4f} seconds")
     my_doc.add_heading('                                       From Audio session we detect this summry:',1)    
     my_doc.add_picture('imags/Session Summary_speech.png')     
     volume(WAVE_OUTPUT_FILE) 
     my_doc.save("report/report_from_session.docx")  
+    # convert("report/report_from_session.docx", "report/report_from_session.pdf")  
+     
+   
    
 def combine_all_docx():
     master = Document_compose("report/report_from_session.docx")
