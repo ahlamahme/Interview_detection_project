@@ -8,12 +8,14 @@
      .hidden {
           position: absolute;
           top: -10000px;
-          left: -10000px;}
+          left: -10000px;
+          }
      video {
           height: 100vh;
           width: 100%;
           object-fit: fill;
-          position: absolute;}
+          position: absolute;
+          }
 </style>
 <video id="q0"  preload="auto"  class="hidden">
   <source src="../static/Hi, I am your interviewer, are you ready for questions.mp4" type="video/mp4">
@@ -90,15 +92,17 @@
 <video id="l2"  preload="auto"  class="hidden">
      <source src="../static/l2.mp4" type="video/mp4">
 </video>
-<textarea id="repeat" name="w3review" rows="4" cols="50"></textarea>
-<textarea id="ready" name="w3review" rows="4" cols="50"></textarea>
-<button onclick="playPause()">Play/Pause</button>
+<textarea id="repeat" name="w3review" rows="0" cols="0" hidden = "hidden"></textarea>
+<textarea id="ready" name="w3review" rows="0" cols="0" hidden = "hidden" ></textarea>
+<div style = "text-align:center;padding-top: 300px;padding-bottom: 300px;">
+    <button onclick="playPause()" style = "background-color: #e55b41; width:200px; height:100px; border-radius: 20px">Play/Pause</button>
+</div>
 <element onload="start_facial"></element>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 <script src="../static/harck.js"></script>
-<body>
+<body style="background-color:#02a3e9">
      <script>
-       
+
        function start_facial(){
             $.ajax({
                  url:"/session",
@@ -110,15 +114,15 @@
                  context:document.body
             })
         }
-        
+
        function speech_py(){
             $.ajax({
                  url:"/speech",
                  context:document.body
             })
         }
-   
-        
+
+
    </script>
    </body>
 <script>
@@ -185,7 +189,7 @@
                     q = document.getElementById(qs[q_index]);
                     q.addEventListener('ended', listen, false);
                     //q.addEventListener('ended', speech_py, false);
-                    
+
                     //q.addEventListener('ended', transcript, false);
                     // q.myParam="repeat";
                     console.log(qs[q_index]);
@@ -213,7 +217,7 @@
                          if (q_index >= 5) {
                               microphone.mediaStream.getTracks()[0].stop();
                               end();
-                             
+
                          }
                          document.getElementById("l" + l_index).setAttribute('class', 'hidden');
                          Ask();
@@ -249,7 +253,7 @@
                          setTimeout(pause, 2000);
                     });
                }
-               
+
                get_speaking(speechEvents);
           });
      }
@@ -259,15 +263,15 @@
             q0.myParam = "ready";
             q0.play();
             q0.setAttribute('class', '');
-           
+
         }
      function playPause() {
           qs=interview_qs(5);
           speech_py();
           facial_py();
           start();
-         
-          
+
+
     }
 </script>
 
