@@ -95,14 +95,25 @@
 <textarea id="repeat" name="w3review" rows="0" cols="0" hidden = "hidden"></textarea>
 <textarea id="ready" name="w3review" rows="0" cols="0" hidden = "hidden" ></textarea>
 <div style = "text-align:center;padding-top: 300px;padding-bottom: 300px;">
-    <button onclick="playPause()" style = "background-color: #e55b41; width:200px; height:100px; border-radius: 20px">Play/Pause</button>
+    <button onclick="playPause()" style = "background-color: #e55b41; width:200px; height:100px; border-radius: 20px;cursor: pointer;"  >start the session</button>
 </div>
 <element onload="start_facial"></element>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 <script src="../static/harck.js"></script>
 <body style="background-color:#02a3e9">
      <script>
-
+       function combine(){
+            $.ajax({
+                 url:"/combine",
+                 type:"POST",
+                 context:document.body
+            })}  
+       function flag_check(){
+            $.ajax({
+                 url:"/flag_py",
+                 type:"POST",
+                 context:document.body
+            })}
        function start_facial(){
             $.ajax({
                  url:"/session",
@@ -126,6 +137,7 @@
    </script>
    </body>
 <script>
+    
      q_index=-1;
      l_index=1;
      l_count=3;
@@ -153,6 +165,13 @@
      function end() {
           console.log("session ended");
           console.log("final",Content);
+          flag_check();
+          history.back();
+          combine();
+          
+          
+ 
+
      }
      function transcript (){
           let SpeechRecognition = window.webkitSpeechRecognition;
@@ -203,7 +222,7 @@
                          if(q_index===-1)
                          {
                               if(ready.textContent==="false")
-                              {
+                              {    //flag=true;
                                    end();
                                    listen().close();
                               }
@@ -216,12 +235,13 @@
                               q_index++;
                          if (q_index >= 5) {
                               microphone.mediaStream.getTracks()[0].stop();
+                             // flag==true;
                               end();
 
                          }
                          document.getElementById("l" + l_index).setAttribute('class', 'hidden');
                          Ask();
-                        // speech_py();
+                       
                     }
                }
                function get_speaking(speechEvents) {

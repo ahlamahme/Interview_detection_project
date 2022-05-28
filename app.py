@@ -60,7 +60,7 @@ stream = p.open(format=FORMAT,
                 input=True,
                 frames_per_buffer=CHUNK)
 
-
+end_session=True;
 background_scripts = {}
 @app.get("/")
 def indext_get():
@@ -149,6 +149,7 @@ def videos_get():
 @app.route('/facial')
 def gaze_blinking_function():
         #variables
+     global end_session 
      #JAWLINE_POINTS = list(range(0, 17))
      #RIGHT_EYEBROW_POINTS = list(range(17, 22))
      #LEFT_EYEBROW_POINTS = list(range(22, 27))
@@ -430,13 +431,14 @@ def gaze_blinking_function():
             #cv2.putText(frame, "Left pupil:  " + str(left_pupil), (90, 130), cv2.FONT_HERSHEY_DUPLEX, 0.9, (147, 58, 31), 1)
             #cv2.putText(frame, "Right pupil: " + str(right_pupil), (90, 165), cv2.FONT_HERSHEY_DUPLEX, 0.9, (147, 58, 31), 1)
 
-            cv2.imshow("Demo", frame)
+            #cv2.imshow("Demo", frame)
             #cv2.imshow("Face",frame2)
 
             if slouch == True and time.time() - t_last > 10:
                 pymsgbox.alert('Stop Slouching!', 'PostureFix')
                 t_last = time.time()
-        if cv2.waitKey(1) == 27:
+        #if cv2.waitKey(1) == 27:
+        if end_session==False :
             session_time=time.time()-session_start
             eye_contact= ((time_puse)/(session_time))
             eye_contact=(1-eye_contact)*100
@@ -468,7 +470,7 @@ def gaze_blinking_function():
      
      my_doc1.add_picture('imags/count_report.png')    
      my_doc1.save("report/report_from_session1.docx") 
-     combine_all_docx()
+    # combine_all_docx()
      webcam.release()
      cv2.destroyAllWindows()
      
@@ -476,6 +478,7 @@ def gaze_blinking_function():
 def speech():
       
     flag=False
+    global end_session 
     p1 = modelPredictions(path='SER_model.h5')
     p1.load_model()
     data = array('h', np.random.randint(size = 512, low = 0, high = 500))
@@ -495,7 +498,7 @@ def speech():
     # Insert frames to 'output.wav'.
        #for i in range(0, timesteps):
    
-       while 1: 
+       while 1:
           
             data = array('l', stream.read(CHUNK)) 
             frames.append(data)
@@ -505,10 +508,11 @@ def speech():
             wf.setframerate(RATE)
             wf.writeframes(b''.join(frames))
             
-            if keyboard.is_pressed ("esc")  :
-                flag=True
-               # p1.predictEmotion(file=WAVE_OUTPUT_FILE)  
-                break
+            #if keyboard.is_pressed ("esc")  :
+           # if flag_py(flag):
+            if end_session==False :
+               flag=True             
+               break
             
               
            
@@ -529,14 +533,16 @@ def speech():
       # 
     
 # SESSION END 
-       if flag==True :            
+       if flag==True: 
         toc = time.perf_counter()
         stream.stop_stream()
         stream.close()
         p.terminate()
         wf.close()
-        print('** session ended')
-        break
+        print('** session ended') 
+        break 
+        
+        
 
 # Present emotion distribution for the whole session.
     total_predictions_np =  np.mean(np.array(total_predictions).tolist(), axis=0)
@@ -551,10 +557,9 @@ def speech():
     my_doc.add_picture('imags/Session Summary_speech.png')     
     volume(WAVE_OUTPUT_FILE) 
     my_doc.save("report/report_from_session.docx")  
-    # convert("report/report_from_session.docx", "report/report_from_session.pdf")  
-     
+    
    
-   
+@app.route('/combine', methods = ['POST']) 
 def combine_all_docx():
     master = Document_compose("report/report_from_session.docx")
     composer = Composer(master)
@@ -564,8 +569,31 @@ def combine_all_docx():
     composer.append(doc2)
     #Save the combined docx with a name
     composer.save("report/combined.docx")     
-    convert("report/combined.docx", "report/combined.pdf")      
+    convert("report/combined.docx", "report/combined.pdf")
+     
 
-
+@app.route('/flag_py', methods = ['POST'])
+def not_end():  
+    global end_session 
+    end_session=False
+    return end_session
+#def flag_py(flag):
+ #   flag=request.args.get(True)
+  #  return flag
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+
+
+
+
+#def speech():
+ #   global end_session 
+  #  print("** session started")
+   # while True:
+    #    while not_end():
+     #       print("in inner")
+      #  if end_session==False :
+       #     print('** session ended')
+    #    break
