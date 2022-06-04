@@ -6,10 +6,10 @@ from chat import *
 import cv2
 from AVrecordeR import *
 from SER import *
-from POSTURE import *
+from test import *
 from EYE import *
 from FER import *
-from volume import *
+from volume_meter import *
 from multiprocessing import process
 import threading
 
@@ -81,12 +81,14 @@ def start_posture():
     print("before post")
     sit.startPost()
     print("After ser")
+    return ('/')
 
 @app.route("/stop_posture")
 def stop_posture():
     print("before stop post")
     sit.stopPost()
     print("after stop post")
+    print("stoppingPost")
     return ('/')
     
 eye = EYE(cap) 
@@ -120,29 +122,30 @@ def start_fer():
 @app.route("/stop_fer")
 def stop_fer():
     f1.stop_facial()
+    print("stoppingFER")
     return ('/')
 
-file_name="records/user_record.avi"
+
 @app.route("/video")   
 def record():
-    file_manager(file_name)
+    file_manager("hh")
     print("before av")
-    start_AVrecording(file_name) 
+    start_AVrecording("hh",cap) 
     print("after av")
     return ('/')
 
 @app.route("/video_stop")  
 def stop_record():
     print("stop av b4")
-    stop_AVrecording(file_name)
-    print("stop av after")
+    stop_AVrecording("hh")
+    print("avDone")
     return ('/')
 
 
 @app.route("/volume_meter")
 def measure_v():
     print("involume")
-    vm = volume_meter("records/temp_audio.wav")#path of current user db excel n7ot video report w audio
+    vm = volume_meter("temp_audio.wav")#path of current user db excel n7ot video report w audio
     vm.volume()
     return ('/')
 

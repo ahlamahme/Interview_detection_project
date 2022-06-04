@@ -4,18 +4,18 @@ import pymsgbox
 slouch = False
 count = 0
 session_end = False
-faceCascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+#faceCascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
 time.sleep(0.1)
 t_last = time.time()
 class Posture():
     def __init__(self, cap):
-        self.video_capture = cap
+        self.cap = cap
         self.faceCascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
     def startPost(self):
         while True:
-            ret, frame = self.video_capture.read()
+            ret, frame = self.cap.read()
             gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
             # use appropriate flag based on version of OpenCV
             if int(cv2.__version__.split('.')[0]) >= 3:
@@ -49,9 +49,9 @@ class Posture():
                 t_last = time.time()
 
             # display the resulting image
-           # cv2.imshow('PostureFix', frame)
-            #if cv2.waitKey(1) & 0xFF == ord('q'):
-             #   break
+            cv2.imshow('PostureFix', frame)
+            if cv2.waitKey(1) & 0xFF == ord('q'):
+               break
 
             time.sleep(0.5)
 
@@ -60,4 +60,5 @@ class Posture():
         session_end = True
 
 if __name__ == '__main__':
-    Posture.startPost(self= None)
+    posture=Posture(cv2.VideoCapture(0))
+    posture.startPost()

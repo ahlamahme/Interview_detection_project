@@ -3,8 +3,8 @@ import json
 
 
 import torch
-
-
+import nltk
+#nltk.download('punkt')
 
 from model import NeuralNet
 from nltk_utils import bag_of_words, tokenize
@@ -29,7 +29,7 @@ model.load_state_dict(model_state)
 model.eval()
 
 bot_name = "Sam"
-
+#global sentence
 def get_response(msg):
     sentence = tokenize(msg)
     X = bag_of_words(sentence, all_words)
@@ -49,17 +49,17 @@ def get_response(msg):
               return random.choice(intent['responses'])
 
     return "I do not understand..."
-
-
-if __name__ == "__main__":
-    print("Let's chat! (type 'quit' to exit)")
+def chat():
     while True:
-        # sentence = "do you use credit cards?"
         sentence = input("You: ")
-
         if sentence == "quit":
             break
-
         resp = get_response(sentence)
         print(resp)
+                  
+
+if __name__ == "__main__":
+    chat();
+
+    
 

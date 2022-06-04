@@ -94,16 +94,15 @@
 <video id="l2" preload="auto" class="hidden">
      <source src="../static/l2.mp4" type="video/mp4">
 </video>
-<textarea id="repeat" name="w3review" rows="0" cols="0" hidden = "hidden"></textarea>
-<textarea id="ready" name="w3review" rows="0" cols="0" hidden = "hidden" ></textarea>
-<div style = "text-align:center;padding-top: 300px;padding-bottom: 300px;">
-    <button onclick="playPause()" style = "background-color: #e55b41; width:200px; height:100px; border-radius: 20px;cursor: pointer;"  >start the session</button>
-</div>
+<textarea id="repeat" name="w3review" rows="4" cols="50"></textarea>
+<textarea id="ready" name="w3review" rows="4" cols="50"></textarea>
+<button onclick="playPause()">Play/Pause</button>
 
 <element onload="start_session"></element>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 <script src="../static/harck.js"></script>
-<body style="background-color:#02a3e9">
+
+<body>
     <script>
         function start_session() {
             $.ajax({
@@ -138,7 +137,7 @@
 
         function stop_post() {
             $.ajax({
-                url: "/stop_posture",
+                url: '/stop_posture',
                 context: document.body
             })
         }
@@ -222,15 +221,15 @@
     document.addEventListener("start", () => {
         //stop_analysing();
         stop_speech();
-        stop_post();
         stop_fer();
         stop_eye();
         stop_record();
         volume();
+        stop_post();
         console.log("session ended");
         console.log("final", Content);
         window.sessionStorage.setItem('end', "true");
-        window.location.replace("http://127.0.0.1:5000/");
+        window.location.replace("http://127.0.0.1:5500/templates/index.html");
 
     });
 
