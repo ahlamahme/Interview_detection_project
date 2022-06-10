@@ -1,4 +1,7 @@
-<<<<<<< HEAD
+# Interview_detection_project
+This is our graduation project of faculty of engineering Ain shams 
+
+
 # Chatbot Deployment with Flask and JavaScript
 
 In this tutorial we deploy the chatbot I created in [this](https://github.com/python-engineer/pytorch-chatbot) tutorial with Flask and JavaScript.
@@ -52,8 +55,5 @@ In the video we implement the first approach using jinja2 templates within our F
 This repo was used for the frontend code:
 https://github.com/hitchcliff/front-end-chatjs
 =======
-# Interview_detection_project
-This is our graduation project of faculty of engineering Ain shams 
 
 
->>>>>>> refs/remotes/origin/master
