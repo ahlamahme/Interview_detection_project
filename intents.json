@@ -109,7 +109,7 @@
                 "results"
             ],
             "responses": [
-                "ok let's see how you did :) \n <a href= \"dr\" ;return false;> Download report</a>  \n  <a href= \"dv\";return false;>Download video</a> \n I know great tips for questions asked in your interview, Do you want to see tham? \n <button onclick=\"show_tips()\">Yes</button>  <button onclick=\"refuse()\">No</button>"
+                "ok let's see how you did :) \n <a href= \"dr\" ;return false;> Download report</a>  \n  <a href= \"dv\";return false;>Download video</a> \n I know great tips for questions asked in your interview, Do you want to see them? \n <button onclick=\"show_tips()\">Yes</button>  <button onclick=\"refuse()\">No</button>"
             ]
         },
         {

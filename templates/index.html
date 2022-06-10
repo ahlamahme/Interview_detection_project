@@ -385,12 +385,13 @@ https://templatemo.com/tm-537-art-factory
         <div class="chatbox__button">
             <button><img src="{{ url_for('static', filename='images/chatbox-icon.svg') }}" /></button>
         </div>
-        <div class='end__button'>
-            <button id="bb">btn</button>
-        </div>
-        <div class='fake__input'>
-            <textarea id="fake" name="w3review" rows="2" cols="20"></textarea>
-        </div>
+        
+    </div>
+    <div class='end__button'>
+        <button id="bb" hidden="hidden">btn</button>
+    </div>
+    <div class='fake__input'>
+        <textarea id="fake" name="w3review" rows="2" cols="20"hidden="hidden"></textarea>
     </div>
     <script>
         
@@ -421,9 +422,12 @@ https://templatemo.com/tm-537-art-factory
 
         function show_qtips(event) {
             var source = event.target || event.srcElement;
-            alert(source.innerText)
+            document.querySelector('.fake__input').innerText = source.innerText
+            console.log("print "+source.innerText);
+            document.getElementById("bb").click();
+             
             
-
+                            
         }
       
         function show_tips() {
