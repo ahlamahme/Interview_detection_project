@@ -1,20 +1,20 @@
 from asyncio.windows_events import NULL
+from urllib.request import Request, urlopen   
 from urllib import response
-import keras
+import tensorflow
+#import keras
+from tensorflow import keras 
 import numpy as np
 import librosa
 import pyaudio
 import wave
 from array import array
 import time
-from matplotlib import pyplot as plt
+import matplotlib.pyplot as plt
 import IPython.display as ipd
-from docx2pdf import convert
 import numpy as np
 from unittest.main import main
-import matplotlib.pyplot as plt
-from keras.models import model_from_json
-from multiprocessing import Process
+#import ray
 import keyboard
 
 session_end=False
@@ -34,8 +34,6 @@ class SER():
         self.emo_list = list(emotions.values())
         self.p = pyaudio.PyAudio()
         self.stream = self.p.open(format=self.FORMAT, channels=self.CHANNELS, rate=self.RATE, input=True, frames_per_buffer=self.CHUNK)
-
-    def load_model(self):
         self.loaded_model = keras.models.load_model(self.path)
 
     def predictEmotion(self,file):
@@ -49,7 +47,7 @@ class SER():
         self.total_predictions.append(pred_np)
         max_emo = np.argmax(predictions)
 
-    def analyse_speech(self,q):
+    def analyse_speech(self,q,uid):
         global session_end 
         self.reset()
         print("at call "+ q+" sessiond end is:",session_end)
@@ -83,20 +81,24 @@ class SER():
 
         # Present emotion distribution for the whole session.
         total_predictions_np =  np.mean(np.array(self.total_predictions).tolist(), axis=0)
-        fig = plt.figure(figsize = (7, 5))
+        fig = plt.figure(figsize = (6, 5))
         plt.bar(self.emo_list, total_predictions_np, color = 'indigo')
         plt.ylabel("Mean probabilty (%)")
         # qid
-        plt.title("Session Summary \n"+"Emotions analyzed for: {(toc - tic):0.4f} seconds")
-        ser_result = fig.savefig('imags/Session Summary_speech'+q+'.png')
+        plt.title("Speech Emotions recoqnized for q"+q)
+        ser_result = fig.savefig(uid+'/Session Summary_speech'+q+'.png')
+        print("saved ",q)
         return ser_result
 
+    
     def stop(self):
         global session_end;
         session_end = True
 
     def reset(self):
         print("reset session end successfully")
+        #self.total_predictions = []
+        #self.stream = self.p.open(format=self.FORMAT, channels=self.CHANNELS, rate=self.RATE, input=True, frames_per_buffer=self.CHUNK)
         global session_end;
         session_end = False;    
 
@@ -104,4 +106,4 @@ class SER():
 if __name__== "__main__":
     p1 = SER(path='SER_model.h5')
     p1.stop()
-    p1.analyse_speech("q")
+    p1.analyse_speech("4","0")

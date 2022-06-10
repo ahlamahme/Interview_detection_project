@@ -1,18 +1,18 @@
 import cv2
 import numpy as np
-from keras.models import model_from_json
-from keras.preprocessing import image
-import numpy as np
+from tensorflow import keras
+from tensorflow.keras.models import model_from_json
 import matplotlib.pyplot as plt
-from keras.preprocessing import image
-from keras.preprocessing.image import img_to_array
-from multiprocessing import Process
+from tensorflow.keras.preprocessing import image
+from tensorflow.keras.preprocessing.image import img_to_array
+from multiprocessing import Lock, Process
 import keyboard
 import os
+import threading
 os.environ['KMP_DUPLICATE_LIB_OK']='True'
 
 end_session=True
-
+lock = threading.Lock()
 class FER():
     def __init__(self,cap):
         self.emotion_labels = ['neutral', 'happiness', 'surprise', 'sadness', 'anger', 'disgust', 'fear']
@@ -28,7 +28,10 @@ class FER():
         self.loaded_model.load_weights('Saved-Models-facial/model8258.h5')
 
     def predict_emotion(self):
-        _, frame = self.cap.read()
+        #lock.acquire()
+        
+        frame= self.cap.getNextFrame()[0]
+        #lock.release()  
         labels = []
         gray = cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
         faces = self.face_classifier.detectMultiScale(gray)
@@ -49,9 +52,13 @@ class FER():
         global end_session
         end_session=False
 
-    def analyse_face(self,q):
+
+    def reset(self):
         global end_session
         end_session=True
+
+    def analyse_face(self,q,uid):
+        self.reset()
         while True:
              self.predict_emotion();
              if (end_session==False):
@@ -61,17 +68,17 @@ class FER():
         print("break works")        
         total_predictions_np =  np.mean(np.array(self.total_predictions).tolist(), axis=0)
         print("hh")
-        fig = plt.figure(8)
+        fig = plt.figure()
         plt.bar(self.emotion_labels, total_predictions_np, color = 'blue')
         plt.ylabel("Mean probabilty (%)")
-        plt.title("Session Summary \n"+"Emotions analyzed for:")
+        plt.title("Face Emotions recoqnized for q"+q)
         print("before save")
-        fig.savefig('imags/Session Summary_face'+q+'.png')
+        fig.savefig(uid+'/Session Summary_face'+q+'.png')
 
 if __name__== "__main__":
     f1 = FER(cv2.VideoCapture(0))
     f1.load_model()
-    f1.analyse_face()
+    f1.analyse_face("4","0")
 
 
     

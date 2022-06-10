@@ -29,7 +29,7 @@ https://templatemo.com/tm-537-art-factory
 </head>
 
 <body>
-
+    
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
         <div class="jumper">
@@ -363,115 +363,137 @@ https://templatemo.com/tm-537-art-factory
             </div>
         </div>
     </section>
-    <!-- ***** Frequently Question End ***** -->
-
-
-    <!-- ***** Contact Us Start ***** -->
-    <!-- <section class="section" id="contact-us">
-        <div class="container-fluid">
-            <div class="row">
-                <!-- ***** Contact Map Start ***** -->
-    <!-- <div class="col-lg-6 col-md-6 col-sm-12">
-                    <div id="map"> -->
-    <!-- How to change your own map point
-                           1. Go to Google Maps
-                           2. Click on your location point
-                           3. Click "Share" and choose "Embed map" tab
-                           4. Copy only URL and paste it within the src="" field below
-                    -->
-    <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1197183.8373802372!2d-1.9415093691103689!3d6.781986417238027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdb96f349e85efd%3A0xb8d1e0b88af1f0f5!2sKumasi+Central+Market!5e0!3m2!1sen!2sth!4v1532967884907" width="100%" height="500px" frameborder="0" style="border:0" allowfullscreen></iframe>
-                    </div>
-                </div> -->
-    <!-- ***** Contact Map End ***** -->
-
-    <!-- ***** Contact Form Start ***** -->
-    <!-- <div class="col-lg-6 col-md-6 col-sm-12">
-                    <div class="contact-form">
-                        <form id="contact" action="" method="post">
-                          <div class="row">
-                            <div class="col-md-6 col-sm-12">
-                              <fieldset>
-                                <input name="name" type="text" id="name" placeholder="Full Name" required="" class="contact-field">
-                              </fieldset>
-                            </div>
-                            <div class="col-md-6 col-sm-12">
-                              <fieldset>
-                                <input name="email" type="text" id="email" placeholder="E-mail" required="" class="contact-field">
-                              </fieldset>
-                            </div>
-                            <div class="col-lg-12">
-                              <fieldset>
-                                <textarea name="message" rows="6" id="message" placeholder="Your Message" required="" class="contact-field"></textarea>
-                              </fieldset>
-                            </div>
-                            <div class="col-lg-12">
-                              <fieldset>
-                                <button type="submit" id="form-submit" class="main-button">Send It</button>
-                              </fieldset>
-                            </div>
-                          </div>
-                        </form>
-                    </div>
+    <div class="chatbox">
+        <div class="chatbox__support">
+            <div class="chatbox__header">
+                <div class="chatbox__image--header">
+                    <img src="https://img.icons8.com/color/48/000000/circled-user-female-skin-type-5--v1.png" alt="image">
                 </div>
-                <!-- ***** Contact Form End ***** -->
-    <!-- </div>
+                <div class="chatbox__content--header">
+                    <h4 class="chatbox__heading--header">Chat support</h4>
+                    <p class="chatbox__description--header">Hi. My name is Sam. How can I help you?</p>
+                </div>
+            </div>
+            <div class="chatbox__messages">
+                <div></div>
+            </div>
+            <div class="chatbox__footer">
+                <input type="text" placeholder="Write a message...">
+                <button class="chatbox__send--footer send__button">Send</button>
+            </div>
         </div>
-    </section> -->
-    <!-- ***** Contact Us End ***** -->
-
-    #CHATBOT
-    <div id="myDIV" class="container">
-        <div class="chatbox">
-            <div class="chatbox__support">
-                <div class="chatbox__header">
-                    <div class="chatbox__image--header">
-                        <img src="https://img.icons8.com/color/48/000000/circled-user-female-skin-type-5--v1.png" alt="image">
-                    </div>
-                    <div class="chatbox__content--header">
-                        <h4 class="chatbox__heading--header">Chat support</h4>
-                        <p class="chatbox__description--header">Hi. My name is Sam. How can I help you?</p>
-                    </div>
-                </div>
-                <div class="chatbox__messages">
-                    <div></div>
-                </div>
-                <div class="chatbox__footer">
-                    <input type="text" placeholder="Write a message...">
-                    <button class="chatbox__send--footer send__button">Send</button>
-                </div>
-            </div>
-            <div class="chatbox__button">
-                <button><img src="{{ url_for('static', filename='images/chatbox-icon.svg') }}" /></button>
-            </div>
-            <div class='end__button'>
-                <button hidden id="bb">btn</button>
-            </div>
+        <div class="chatbox__button">
+            <button><img src="{{ url_for('static', filename='images/chatbox-icon.svg') }}" /></button>
+        </div>
+        <div class='end__button'>
+            <button id="bb">btn</button>
+        </div>
+        <div class='fake__input'>
+            <textarea id="fake" name="w3review" rows="2" cols="20"></textarea>
         </div>
     </div>
     <script>
-        //window.sessionStorage.setItem('end', "false");
+        
+        const f = document.querySelector('.fake__input');
+        
 
-        function check() {
-            if (window.sessionStorage.getItem('end') === "true") {
-                console.log("I'm here", window.sessionStorage.getItem('end'));
-                document.getElementById("bb").click();
-                window.sessionStorage.setItem('end', "false"); //reset
-                console.log("I'm here", window.sessionStorage.getItem('end'));
-            }
+        function generate_report() {
+            $.ajax({
+                url: "/report",
+            })
+        }
+
+        function dr() {
+            $.ajax({
+                url: "/dr",
+                context: document.body
+            })
 
         }
+
+        function dv() {
+            $.ajax({
+                url: "/dv",
+                context: document.body
+            })
+
+        }
+
+        function show_qtips(event) {
+            var source = event.target || event.srcElement;
+            alert(source.innerText)
+            
+
+        }
+      
+        function show_tips() {
+            
+            fetch('http://127.0.0.1:5000/flask2js', {
+                                
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            })
+            .then(response => {
+             if(response.status == 200){
+                  return response.json();
+             } else {
+               // handle this somehow
+              }
+            }).then(json => {
+                         
+             for (var i = 0; i < 5; i++) {
+                console.log(json['q' + i.toString()] );
+                document.querySelector('.fake__input').innerText = json['q' + i.toString()]+"_t";
+                document.getElementById("bb").click();
+            }
+             }).catch(error => {
+               console.log('error with access token req!')
+               })
+            
+            
+           
+
+        }
+
+        function refuse() {
+            document.querySelector('.fake__input').innerText = "noTips"
+                //click hidden btn to trigger reply
+            document.getElementById("bb").click();
+        }
+
+        function post_session() {
+            //check if session has ended
+            if (window.sessionStorage.getItem('end') === "true") {
+                //resest end
+                window.sessionStorage.setItem('end', "false");
+                //check if user actually did interview
+                if (window.sessionStorage.getItem('ready') === "true") {
+                    console.log("in ready")
+                        //generate report after offset to ensure all report inputs are created
+                    setTimeout(generate_report(), 3000);
+                    //update fake text field for get results automatic reply
+                    document.querySelector('.fake__input').innerText = "results"
+                        //click hidden btn to trigger reply
+                    document.getElementById("bb").click();
+                    console.log("clicked")
+                }
+                //if user wasn't ready
+                else if (window.sessionStorage.getItem('ready') === "false") {
+                    document.querySelector('.fake__input').innerText = "notReady";
+                    document.getElementById("bb").click();
+                }
+                window.sessionStorage.setItem('ready', "false");
+            }
+        }
+
         window.addEventListener('load', (event) => {
-            check()
+            post_session()
         });
     </script>
 
-    <script>
-        $SCRIPT_ROOT = {
-            {
-                request.script_root | tojson
-            }
-        };
-    </script>
+    
     <script type="text/javascript" src="{{ url_for('static', filename='app.js') }}"></script>
 
     <!-- ***** Footer Start ***** -->

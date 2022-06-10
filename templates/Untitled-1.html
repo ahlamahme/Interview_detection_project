@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+</head>
+
+<body>
+    <button onclick="get_txt(event)" id="q0">This is q0</button>
+    <button onclick="get_txt(event)" id="q1">This is q1</button>
+    <button onclick="get_txt(event)" id="q2">This is q2</button>
+    <button onclick="get_txt(event)" id="q3">This is q3</button>
+    <button onclick="get_txt(event)" id="q4">This is q4</button>
+    <script>
+        function get_txt(event) {
+            var source = event.target || event.srcElement;
+            alert(source.innerText)
+        }
+    </script>
+
+
+
+</body>
+
+</html>

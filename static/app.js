@@ -66,9 +66,10 @@ class Chatbox {
     }
     onEndSession(chatbox) {
         console.log("in if");
-        var textField = chatbox.querySelector('input');
-        let text1 = "results"
-        fetch('http://127.0.0.1:5000/post_interview', {
+        var textField = document.querySelector('.fake__input');
+        let text1 = textField.textContent
+        console.log("text1 is", text1)
+        fetch('http://127.0.0.1:5000/predict', {
                 method: 'POST',
                 body: JSON.stringify({ message: text1 }),
                 mode: 'cors',
@@ -81,12 +82,12 @@ class Chatbox {
                 let msg2 = { name: "Sam", message: r.answer };
                 this.messages.push(msg2);
                 this.updateChatText(chatbox)
-                textField.value = ''
+
 
             }).catch((error) => {
                 console.error('Error:', error);
                 this.updateChatText(chatbox)
-                textField.value = ''
+
             });
     }
 

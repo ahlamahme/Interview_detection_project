@@ -64,7 +64,7 @@
                 "yes allow access",
                 "yes"
             ],
-            "responses": ["Hi! Please view this link: <a href='http://127.0.0.1:5000/session?_ijt=kt9alca9da380kdongcll54suq'>click here</a>"]
+            "responses": ["Hi! Please view this link: <a href='http://127.0.0.1:5000/session?_ijt=kt9alca9da380kdongcll54su'>click here</a>"]
 
         },
 
@@ -95,14 +95,500 @@
             ]
         },
         {
+            "tag": "not ready",
+            "patterns": [
+                "notReady"
+            ],
+            "responses": [
+                "Whenever you're ready ask for the link again, I will be here."
+            ]
+        },
+        {
             "tag": "results",
             "patterns": [
                 "results"
             ],
             "responses": [
-                "ok let's see how you did "
+                "ok let's see how you did :) \n <a href= \"dr\" ;return false;> Download report</a>  \n  <a href= \"dv\";return false;>Download video</a> \n I know great tips for questions asked in your interview, Do you want to see tham? \n <button onclick=\"show_tips()\">Yes</button>  <button onclick=\"refuse()\">No</button>"
+            ]
+        },
+        {
+            "tag": "q6_t",
+            "patterns": ["How do you deal with pressure or stressful situations?_t"],
+            "responses": ["<button onclick=\"show_qtips(event)\">How do you deal with pressure or stressful situations?</button>"]
+        },
+        {
+            "tag": "q6",
+            "patterns": [
+                
+                
+                "How do you deal with pressure or stressful situations?"
+
+            ],
+            "responses": [
+                "Many jobs involve moments when, for varied reasons, there are unexpected situations that require swift action. The ability to stay calm, think logically and act correctly in such a scenario is a major asset.This is another good instance of when to use the STAR method to talk about a specific time you were faced with a challenge, might have succumbed to stress but managed to calmly find a solution."
+            ]
+        },
+        {
+            "tag": "q2_t",
+            "patterns":  ["Tell me about yourself_t"],
+            "responses": ["<button onclick=\"show_qtips(event)\">Tell me about yourself</button>"]
+        },
+        {
+            "tag": "q7",
+            "patterns": [
+                
+                "Tell me about yourself"
+               
+            ],
+            "responses": [
+                "Try to cover your accomplishment in your answer.and talk about the work or project that resembles the requirement of the position.Also may need to Mention what led you to this point in your career and why the job is the perfect match for you.",
+                "You may needm't  to narrate anything that is personal.and take care to end your answer by telling them you want the position and why.Also Use selective terminology in your answer like problem-solving, innovative, fast-paced, creative, and so on."
+
 
             ]
+        },
+        {
+            "tag": "q20_t",
+            "patterns": ["Why do you want to work at this company?_t"],
+            "responses": ["<button onclick=\"show_qtips(event)\">Why do you want to work at this company?</button>"]
+        },
+        {
+            "tag": "q20",
+            "patterns": [
+                
+                "Why do you want to work at this company?"
+                
+            ],
+            "responses": [
+                "Conduct thorough research of the company and company's top executive before facing interview.And you want to Learn about the company's vision and how you can contribute to it.",
+                "As a professional, you should be able to demonstrate your eagerness to work for the company.And demonstrate evidence that you understand the employer's business."
+            ]
+        },
+        {
+            "tag": "q4_t",
+            "patterns": ["Do you consider yourself successful and why?_t"],
+            "responses": ["<button onclick=\"show_qtips(event)\">Do you consider yourself successful and why?</button>"]
+        },
+        {
+            "tag": "q4",
+            "patterns": [
+                
+                "Do you consider yourself successful and why?"
+                
+
+            ],
+            "responses": [
+                "You can Summarize your career goals and Don't say something that sounds self-centric ",
+                "success is subjective, in personal life success is ...., in work life success is ..."
+
+
+            ]
+        },
+        {
+            "tag": "q10_t",
+            "patterns": ["What are your greatest stengths?_t"],
+            "responses": ["<button onclick=\"show_qtips(event)\">What are your greatest stengths?</button>"]
+        },
+        {
+            "tag": "q10",
+            "patterns": [
+                
+                "What are your greatest stengths?"
+                
+
+            ],
+            "responses": [
+                "In your answer to this question, share your most relevant technical and soft skills. While it may feel uncomfortable to talk highly of yourself, remember that this is your opportunity to tell your interviewers what makes you a great candidate—and they want to hear it"
+
+
+            ]
+        },
+        {
+            "tag": "q17_t",
+            "patterns": ["Where do you see yourself in 5 years?_t"],
+            "responses": ["<button onclick=\"show_qtips(event)\">Where do you see yourself in 5 years?</button>"]
+        },
+        {
+            "tag": "q17",
+            "patterns": [
+                
+               
+                "Where do you see yourself in 5 years?"
+
+            ],
+            "responses": [
+                "To answer in this question successfully: \n first ,Do your research on your chosen career.\n second,Imagine your future.\n third:Relate your answer to the job. \n fourth,Be ambitious, yet realistic. \n fifth,Tell them what you want. \n sixth:End your answer with a question. \n Instead if you really have no idea, just joke around and say in the mirror."
+            ]
+        },
+        {
+            "tag": "q12_t",
+            "patterns": ["What do you consider to be your weaknesses?_t"],
+            "responses": ["<button onclick=\"show_qtips(event)\">What do you consider to be your weaknesses?</button>"]
+        },
+        {
+            "tag": "q12",
+            "patterns": [
+                
+                
+                "What do you consider to be your weaknesses?"
+
+            ],
+            "responses": [
+                "It can feel awkward to discuss your weaknesses in an environment where you're expected to focus on your accomplishments. However, when answered correctly, sharing your weaknesses shows that you are self-aware with an interest in continued growth and learning—traits that are extremely attractive to many employers."
+            ]
+        },
+        {
+            "tag": "q11_t",
+            "patterns": ["What are your salary expectations?_t"],
+            "responses": ["<button onclick=\"show_qtips(event)\">What are your salary expectations?</button>"]
+        },
+        {
+            "tag": "q11",
+            "patterns": [
+                
+                
+                "What are your salary expectations?"
+
+            ],
+            "responses": [
+                "Interviewers ask this question to make sure your expectations are in line with the amount they've budgeted for the role. If you give a salary range exceedingly lower or higher than the market value of the position, it gives the impression that you don't know your worth.So, may need to provide a range."
+            ]
+        },
+        {
+            "tag": "q18_t",
+            "patterns": ["Why are you the best person for this job?_t"],
+            "responses":[ "<button onclick=\"show_qtips(event)\">Why are you the best person for this job?</button>"]
+        },
+        {
+            "tag": "q18",
+            "patterns": [
+                
+                
+                "Why are you the best person for this job?"
+
+            ],
+            "responses": [
+                "You need to learn about their ideal candidate then discuss your unique traits, study the job description adding info about hiring company is a great plus."
+            ]
+        },
+        {
+            "tag": "q19_t",
+            "patterns": ["Why do you want this job?_t"],
+            "responses": ["<button onclick=\"show_qtips(event)\">Why do you want this job?</button>"]
+        },
+        {
+            "tag": "q19",
+            "patterns": [
+                
+                
+                "Why do you want this job?"
+
+            ],
+            "responses": [
+                "The examples below offer different ways to start answering this question. Pausing to think will leave good impression; also, When speaking answer calmly and as clearly as you can. Remember that you are simply giving the reasons why you want the job and why you would be a good fit for the company:'This opportunity is really exciting for me as I will be able to… or I see the role as a way of developing my career in a forward-thinking/well-established company/industry as…"
+            ]
+        },
+        {
+            "tag": "q9_t",
+            "patterns":  ["What are your career goals?_t"],
+            "responses": ["<button onclick=\"show_qtips(event)\">What are your career goals?</button>"]
+        },
+        {
+            "tag": "q9",
+            "patterns": [
+                
+                
+                "What are your career goals?"
+
+            ],
+            "responses": [
+                "The way you answer this question may vary depending on the company and position, but there are a few things you can consider as you decide how to respond in any situation by define your career goals "
+            ]
+        },
+        {
+            "tag": "q21_t",
+            "patterns": ["Whould you like to work over time or more hours?_t"],
+            "responses":[ "<button onclick=\"show_qtips(event)\">Whould you like to work over time or more hours?</button>"]
+        },
+        {
+            "tag": "q21",
+            "patterns": [
+                
+                
+                "Whould you like to work over time or more hours?"
+
+            ],
+            "responses": [
+                "You should become very honest to answer this question. Don't tell a lie or compromise to get the job only. If you don't have any problem, you can answer like this:I know that in the company being asked to work for an extended number of hours comes with a good reason, so I am ok with it. It an extra effort means I am doing something for the company, I will be happy to do it. \n why not add a little joke? especially if I am compenstaed generously"
+
+            ]
+        },
+        {
+            "tag": "q14_t",
+            "patterns": ["What is more important to you the money or the work?_t"],
+            "responses": ["<button onclick=\"show_qtips(event)\">What is more important to you the money or the work?</button>"]
+        },
+        {
+            "tag": "q14",
+            "patterns": [
+                
+                
+                "What is more important to you the money or the work?"
+
+            ],
+            "responses": [
+                "This is a very tricky question. The work should always be more important than the money. This frame of mind is good for you(at least at the time of interview).Possible Answer 1: \"Money is always important, but the work is most important for me.\" Possible Answer 2:\"I would say that work is more important. If we work and achieve Company goals then obviously money would follow. I believe work to be prior.\"",
+                "It depends on your thoughts and justification, but one point here there's always a third option or a great intro that wraps your answer in a smart way ex: Work and Money are both of equal importance to me, however I would compromise [choice] if [some scenario]"
+            ]
+        },
+        {
+            "tag": "q8_t",
+            "patterns":  ["What are your achievments in life?_t"],
+            "responses": ["<button onclick=\"show_qtips(event)\">What are your achievments in life?</button>"]
+        },
+        {
+            "tag": "q8",
+            "patterns": [
+                
+                
+                "What are your achievments in life?"
+
+            ],
+            "responses": [
+                "This question may also be asked as what are your biggest achievements? Or what are you most proud of?You should discuss only work-related achievements. Try to pick a recent achievement.Possible Answer 1: \"My greatest achievement so far in my career would probably be winning the Manager of the Year award last year.\" Possible Answer 2:\"My biggest accomplishment is overcoming my fear of failure. It gives me a complete sense of living and makes me more confident.\""
+
+            ]
+        },
+        {
+            "tag": "q1_t",
+            "patterns": ["Are you applying for other jobs also?_t"],
+            "responses": ["<button onclick=\"show_qtips(event)\">Are you applying for other jobs also?</button>"]
+        },
+        {
+            "tag": "q1",
+            "patterns": [
+                
+                
+                "Are you applying for other jobs also?"
+
+            ],
+            "responses": [
+                "This question has a very specific purpose. The interviewer wants to know that if the candidate admits that he has applied to other places or gives a canned answer. Or what the candidate think about their company.You should never claim that you did not apply to other company. Despite this, you can say that -As you know, I would like to work as a software developer. Beyond your company, I have also applied to XYZ company and ABC company. This answer is more specific."
+
+            ]
+        },
+        {
+            "tag": "q13_t",
+            "patterns": ["What does success mean to you?_t"],
+            "responses": ["<button onclick=\"show_qtips(event)\">What does success mean to you?</button>"]
+        },
+        {
+            "tag": "q13",
+            "patterns": [
+                
+                "What does success mean to you?"
+                
+
+            ],
+            "responses": [
+                "these some possible answers : Possible Answer 1:If I feel I am making a difference working with a team of people to make a more profitable company. It is a success for me.Possible Answer 2: If I put a smile on someone face and make him happy, it is a success for me."
+
+            ]
+        },
+        {
+            "tag": "q3_t",
+            "patterns": [ "Describe your self in one word._t"],
+            "responses": ["<button onclick=\"show_qtips(event)\">Describe your self in one word.</button>"]
+        },
+        {
+            "tag": "q3",
+            "patterns": [
+                
+                "Describe your self in one word."
+               
+
+            ],
+            "responses": [
+                "This question is asked to the candidate to judge how spontaneous and explaining he is. If he uses a word, he must be able to explain that word and represent himself according to that word. These are some positive words. You can use it but be sure that you are judging with the word.Original, genuine, logical, incredible, focused, curious, active, quick, balanced, achiever, etc. "
+            ]
+        },
+        {
+            "tag": "q15_t",
+            "patterns": ["What makes you angry?_t"],
+            "responses": ["<button onclick=\"show_qtips(event)\">What makes you angry?</button>"]
+        },
+        {
+            "tag": "q15",
+            "patterns": [
+                
+                
+               "What makes you angry?"
+
+            ],
+            "responses": [
+                "You should always answer this question in a manner that suits both your personality and management too.\"Sir, I am not a short-tempered person, but I feel a bit of annoyance when someone disturbs me in my work without a genuine reason. Although I am an even-tempered person, when I get angry, I try to channel my negative feeling in my work.\""
+            ]
+        },
+        {
+            "tag": "q16_t",
+            "patterns":["What was the most difficult decision you have made in your past life?_t"],
+            "responses": ["<button onclick=\"show_qtips(event)\">What was the most difficult decision you have made in your past life?/button>"]
+        },
+        {
+            "tag": "q16",
+            "patterns": [
+                
+                
+                "What was the most difficult decision you have made in your past life?"
+
+            ],
+            "responses": [
+                "This question is asked to judge your decision-making capabilities. The interviewer wants to know, how you take a decision in tough times.Possible Answer : After completing my graduation, the toughest decision is whether to go for higher studies or do a job. Then I chose the job because getting trained is better than educated and it was also the demand of that time.  "
+            ]
+        },
+        {
+            "tag": "q5_t",
+            "patterns": ["How do you deal with an angry customer?_t"],
+            "responses": ["<button onclick=\"show_qtips(event)\">How do you deal with an angry customer?</button>"]
+        },
+        {
+            "tag": "q5",
+            "patterns": [
+                
+                
+                "How do you deal with an angry customer?"
+
+            ],
+            "responses": [
+                "Possible Answer 1:I would try to find out exactly what the problem was and evaluate if there was something I could do to make it right.Possible Answer 2:I would ask the customer to explain his problem and carefully listen to him. After that, I do my best to solve his problem. If that problem is not regarding my work area, I spoke to someone who could help him immediately. "
+            ]
+        },
+        {
+            "tag": "q2_t",
+            "patterns": ["Describe 3 things that are most important to you in a job._t"],
+            "responses": ["<button onclick=\"show_qtips(event)\">Describe 3 things that are most important to you in a job.</button>"]
+        },
+        {
+            "tag": "q2",
+            "patterns": [
+                
+                "Describe 3 things that are most important to you in a job."
+                
+
+            ],
+            "responses": [
+                "Possible Answer 1:According to me, Honesty, Loyalty, and determination to achieve my team's target are the three important things in a job.Possible Answer 2:According to me, Professionalism, growth and a healthy work-life balance are the three important things in a job."
+            ]
+        },
+        {
+            "tag": "q22_t",
+            "patterns": ["What would you change about your job?_t"],
+            "responses": ["<button onclick=\"show_qtips(event)\">What would you change about your job?</button>"]
+        },
+        {
+            "tag": "q22",
+            "patterns": [
+                
+                "What would you change about your job?"
+
+                
+
+            ],
+            "responses": [
+                "First:Remain positive: Try to stay positive when giving your answer. While this question might seem to have negative connotations, remaining positive when you give your answer can show that you're professional and respectful.Second:Give specific examples : Offer examples that illustrate what you would change about your current job. This can be especially helpful to interviewers, as they likely do not have any insight into your current work environment or duties.Third:Offer creative solution : Provide solutions for the areas of your job you would change. By offering some ideas for changes that you might implement at your current job."
+            ]
+        },
+        {
+            "tag": "q23_t",
+            "patterns": ["How would your previous boss describe you?_t"],
+            "responses": ["<button onclick=\"show_qtips(event)\">How would your previous boss describe you?</button>"]
+        },
+        {
+            "tag": "q23",
+            "patterns": [
+                
+                "How would your previous boss describe you?"
+                
+
+            ],
+            "responses": [
+                "The easiest way to answer this question is to paraphrase a recent positive performance review. Referencing specifically where you are getting your information from makes it easier to describe yourself as trustworthy, dedicated, and creative without cringing. You will also want to give some big picture context about your role and responsibilities to fill in the gaps around your answer."
+            ]
+        },
+        {
+            "tag": "q24_t",
+            "patterns": ["What do you know about the company?_t"],
+            "responses":[ "<button onclick=\"show_qtips(event)\">What do you know about the company?</button>"]
+        },
+        {
+            "tag": "q24",
+            "patterns": [
+                
+                
+                "What do you know about the company?"
+
+            ],
+            "responses": [
+                "First:Pick two or three specific facts about the company that you can tell the interviewer.Second:You can research facts on the company website, social media profiles, or by searching the company name in Google News.Third:Keep your answer short and concise, it is better to name two facts that you know extremely well than to mention five or six facts that are not 100% accurate"
+            ]
+        },
+        {
+            "tag": "q25_t",
+            "patterns": ["Tell me about a mistake or failure you will never forget in your career and what did you learn about it._t"],
+            "responses": ["<button onclick=\"show_qtips(event)\">Tell me about a mistake or failure you will never forget in your career and what did you learn about it.</button>"]
+        },
+        {
+            "tag": "q25",
+            "patterns": [
+                
+                
+                "Tell me about a mistake or failure you will never forget in your career and what did you learn about it."
+
+            ],
+            "responses": [
+                "First:Choose a real failure. You must answer the question. Do not go with something like: We only improved sales by 35%, but I wanted to do more, so I felt like a failure. I guess I am just a perfectionist.Second:Do not raise red flags. At the same time, you do not have to confess your deepest and darkest secrets.Third:Focus on learning. Pick a story that ends with a compelling example of a lesson learned. Ideally, you should be able to point to applying your hard-won knowledge or skills successfully on a subsequent project."
+            ]
+        },
+        {
+            "tag": "q26_t",
+            "patterns": ["How do you manage stress at work or life in general?_t"],
+            "responses": ["<button onclick=\"show_qtips(event)\">How do you manage stress at work or life in general?</button>"]
+        },
+        {
+            "tag": "q26",
+            "patterns": [
+                
+                
+                "How do you manage stress at work or life in general?"
+
+            ],
+            "responses": [
+                "First:Reflect on how you address stress:Think about how you handle stress and which strategies help you remain calm.Second:share examples of how you manage stress: In your answer, share a time when you overcame stress in a professional setting. Discuss which specific strategies you used and how they led to a positive end result."
+            ]
+        },
+        {
+            "tag": "q27_t",
+            "patterns": ["What motivates you?_t"],
+            "responses":[ "<button onclick=\"show_qtips(event)\">What motivates you?</button>"]
+        },
+        {
+            "tag": "q27",
+            "patterns": [
+                
+                
+                "What motivates you?"
+
+            ],
+            "responses": [
+                "First:Keep the job in mind. When preparing your answer, also think about the skills and abilities that will be the most useful for this job.Second:Consider the company culture. If the company emphasizes the camaraderie of its staff, for example, you might mention how achieving goals as a group motivates you.Third:Share an example. You might want to include an example from your previous job to explain the kinds of projects or tasks that motivate you."
+            ]
+        },
+        {
+            "tag": "noTips",
+            "patterns": ["noTips"],
+            "responses": ["As you wish", "it's your loss :p"]
         }
+
     ]
 }

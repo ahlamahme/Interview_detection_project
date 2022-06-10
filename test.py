@@ -1,6 +1,8 @@
 import cv2
 import time
 import pymsgbox
+from FER import lock
+
 slouch = False
 count = 0
 session_end = False
@@ -9,13 +11,17 @@ faceCascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 time.sleep(0.1)
 t_last = time.time()
 class Posture():
-    def __init__(self, cap):
+    def __init__(self,cap):
         self.video_capture = cap
         self.faceCascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+        
 
-    def startPost(self):
-        while True:
-            ret, frame = self.video_capture.read()
+    def startPost(self,uid):
+        global session_end
+        print("enteringStartPost")
+        while not(session_end):
+           
+            frame=self.video_capture.getNextFrame()[0]
             gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
             # use appropriate flag based on version of OpenCV
             if int(cv2.__version__.split('.')[0]) >= 3:
@@ -43,21 +49,20 @@ class Posture():
             global t_last
             if slouch == True and time.time() - t_last > 10:
                 global count
-                cv2.imwrite("frame%d.jpg" % count, frame)
-                count = count + 1
-                pymsgbox.alert('Stop Slouching!', 'PostureFix')
+                cv2.imwrite(uid+"/frame%d.jpg" % slouch, frame)
+                count  +=  1
+                #pymsgbox.alert('Stop Slouching!', 'PostureFix')
                 t_last = time.time()
 
-            # display the resulting image
-            #cv2.imshow('PostureFix', frame)
-            if cv2.waitKey(1) & 0xFF == ord('q'):
-                break
-
             time.sleep(0.5)
+        print("outofpostwhile")    
 
     def stopPost(self):
-        global session_end;
+        global session_end
         session_end = True
+        self.video_capture.close()
+
 
 if __name__ == '__main__':
-    Posture.startPost(self= None)
+    s= Posture(cv2.VideoCapture(0))
+    s.startPost("0")
