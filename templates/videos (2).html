@@ -115,11 +115,38 @@
 </video>
 <textarea hidden id="repeat" rows="4" cols="50"></textarea>
 <textarea hidden id="ready" rows="4" cols="50"></textarea>
-<button onclick="playPause()">Play/Pause</button>
+<button id = "start_button"onclick="playPause()">Start Interview</button>
 <element onload="start_session"></element>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 <script src="../static/harck.js"></script>
-
+<style>
+    #start_button {
+      display: inline-block;
+      padding: 15px 25px;
+      font-size: 24px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      outline: none;
+      color: #fff;
+      background-color:  #20000d;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 7px #999;
+      margin-top:20%;
+      margin-bottom: 20%;
+      margin-left:43%;
+      margin-right:40%;
+    }
+    
+    #start_button:hover {background-color: #20000d}
+    
+    #start_button:active {
+      background-color:  #20000d;
+      box-shadow: 0 5px #666;
+      transform: translateY(4px);
+    }
+    </style>
 <body style="background-image: url('../static/background.jpg'); background-repeat: no-repeat;background-size: cover; ">
     <script>
         function start_session() {
