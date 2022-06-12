@@ -85,15 +85,12 @@ class EYE():
         
       if self.gaze.is_right():
          text = "Looking right"#pused
-         #print("time pused")
-         #print(timer.pause()) 
+        
               
         
       elif self.gaze.is_left():
          text = "Looking left"#pused
-         #print("time pused")
-         #print(timer.pause())
- 
+         
         
          
       elif self.gaze.is_center():
@@ -110,8 +107,14 @@ class EYE():
      # if cv2.waitKey(1) == 27:
       global res
       session_time=time.time()-self.session_start    
-      eye_contact= ((self.time_puse)/(session_time))
-      eye_contact=(1-eye_contact)*100
+      
+      if(self.time_puse<session_time):
+             eye_contact=(( self.time_puse)/(session_time))
+             eye_contact=(1-eye_contact)*100
+
+      else:
+              eye_contact= ((session_time )/(self.time_puse))
+              eye_contact=((1-eye_contact))*100
 
       res['eye contact']=eye_contact
       res['blinks']=self.TOTAL
@@ -126,9 +129,6 @@ class EYE():
      
 
 
-         #break
-    #webcam.release()
-    # cv2.destroyAllWindows()
 
     def stop(self):
         print("ineyestop")
