@@ -285,16 +285,22 @@
             })
 
         }
+        function Hide_button() {
+          var x = document.getElementById("start_button");
+            
+            x.style.display = "none";
+  
+        }
 
         function end() {
-            //stop_fer();
-            //stop_speech();
+          
             stop_record();
             stop_posture();
             stop_eye();
-            //send_content();
+            
             console.log("session ended");
             console.log("final", Content);
+            Hide_button();
             window.sessionStorage.setItem('end', "true");
             window.location.replace("http://127.0.0.1:5000/");
 
