@@ -59,8 +59,25 @@ body {
     outline: none;
     cursor: pointer;
 }
+.chatbox-buttons{
+    padding: 20px;
+    background-color: #9C1DE7;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 25px;
+    color: white;
+}
 
-
+.chatbox-buttons:hover{
+    padding: 20px;
+    background-color: #581B98;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 25px;
+    color: white;
+}
 
 /*onclick*/
 .onclick{
