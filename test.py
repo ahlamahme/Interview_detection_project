@@ -39,7 +39,7 @@ class Posture():
             # for each face, draw a green rectangle around it and append to the image
             for (x, y, w, h) in faces:
                 cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 1)
-                if y > 250:
+                if (y+h) > 400:
                     print('slouch')
                     global slouch
                     slouch = True
