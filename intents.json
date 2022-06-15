@@ -109,13 +109,13 @@
                 "results"
             ],
             "responses": [
-                "ok let's see how you did :) \n <a href= \"dr\" ;return false;> Download report</a>  \n  <a href= \"dv\";return false;>Download video</a> \n I know great tips for questions asked in your interview, Do you want to see them? \n <button onclick=\"show_tips()\">Yes</button>  <button onclick=\"refuse()\">No</button>"
+                "ok let's see how you did :) \n <a href= \"dr\" ;return false;> Download report</a>  \n  <a href= \"dv\";return false;>Download video</a> \n I know great tips for questions asked in your interview, Do you want to see them? \n <button class=\"chatbox-buttons\" onclick=\"show_tips()\">Yes</button>  <button class=\"chatbox-buttons\" onclick=\"refuse()\">No</button>"
             ]
         },
         {
             "tag": "q6_t",
             "patterns": ["How do you deal with pressure or stressful situations?_t"],
-            "responses": ["<button onclick=\"show_qtips(event)\">How do you deal with pressure or stressful situations?</button>"]
+            "responses": ["<button class=\"chatbox-buttons\" onclick=\"show_qtips(event)\">How do you deal with pressure or stressful situations?</button>"]
         },
         {
             "tag": "q6",
@@ -132,7 +132,7 @@
         {
             "tag": "q2_t",
             "patterns":  ["Tell me about yourself_t"],
-            "responses": ["<button onclick=\"show_qtips(event)\">Tell me about yourself</button>"]
+            "responses": ["<button class=\"chatbox-buttons\" onclick=\"show_qtips(event)\">Tell me about yourself</button>"]
         },
         {
             "tag": "q7",
@@ -151,7 +151,7 @@
         {
             "tag": "q20_t",
             "patterns": ["Why do you want to work at this company?_t"],
-            "responses": ["<button onclick=\"show_qtips(event)\">Why do you want to work at this company?</button>"]
+            "responses": ["<button class=\"chatbox-buttons\" onclick=\"show_qtips(event)\">Why do you want to work at this company?</button>"]
         },
         {
             "tag": "q20",
@@ -168,7 +168,7 @@
         {
             "tag": "q4_t",
             "patterns": ["Do you consider yourself successful and why?_t"],
-            "responses": ["<button onclick=\"show_qtips(event)\">Do you consider yourself successful and why?</button>"]
+            "responses": ["<button class=\"chatbox-buttons\" onclick=\"show_qtips(event)\">Do you consider yourself successful and why?</button>"]
         },
         {
             "tag": "q4",
@@ -188,7 +188,7 @@
         {
             "tag": "q10_t",
             "patterns": ["What are your greatest stengths?_t"],
-            "responses": ["<button onclick=\"show_qtips(event)\">What are your greatest stengths?</button>"]
+            "responses": ["<button class=\"chatbox-buttons\" onclick=\"show_qtips(event)\">What are your greatest stengths?</button>"]
         },
         {
             "tag": "q10",
@@ -207,7 +207,7 @@
         {
             "tag": "q17_t",
             "patterns": ["Where do you see yourself in 5 years?_t"],
-            "responses": ["<button onclick=\"show_qtips(event)\">Where do you see yourself in 5 years?</button>"]
+            "responses": ["<button class=\"chatbox-buttons\" onclick=\"show_qtips(event)\">Where do you see yourself in 5 years?</button>"]
         },
         {
             "tag": "q17",
@@ -224,7 +224,7 @@
         {
             "tag": "q12_t",
             "patterns": ["What do you consider to be your weaknesses?_t"],
-            "responses": ["<button onclick=\"show_qtips(event)\">What do you consider to be your weaknesses?</button>"]
+            "responses": ["<button class=\"chatbox-buttons\" onclick=\"show_qtips(event)\">What do you consider to be your weaknesses?</button>"]
         },
         {
             "tag": "q12",
@@ -241,7 +241,7 @@
         {
             "tag": "q11_t",
             "patterns": ["What are your salary expectations?_t"],
-            "responses": ["<button onclick=\"show_qtips(event)\">What are your salary expectations?</button>"]
+            "responses": ["<button class=\"chatbox-buttons\" onclick=\"show_qtips(event)\">What are your salary expectations?</button>"]
         },
         {
             "tag": "q11",
@@ -258,7 +258,7 @@
         {
             "tag": "q18_t",
             "patterns": ["Why are you the best person for this job?_t"],
-            "responses":[ "<button onclick=\"show_qtips(event)\">Why are you the best person for this job?</button>"]
+            "responses":[ "<button class=\"chatbox-buttons\" onclick=\"show_qtips(event)\">Why are you the best person for this job?</button>"]
         },
         {
             "tag": "q18",
@@ -275,7 +275,7 @@
         {
             "tag": "q19_t",
             "patterns": ["Why do you want this job?_t"],
-            "responses": ["<button onclick=\"show_qtips(event)\">Why do you want this job?</button>"]
+            "responses": ["<button class=\"chatbox-buttons\" onclick=\"show_qtips(event)\">Why do you want this job?</button>"]
         },
         {
             "tag": "q19",
@@ -292,7 +292,7 @@
         {
             "tag": "q9_t",
             "patterns":  ["What are your career goals?_t"],
-            "responses": ["<button onclick=\"show_qtips(event)\">What are your career goals?</button>"]
+            "responses": ["<button class=\"chatbox-buttons\" onclick=\"show_qtips(event)\">What are your career goals?</button>"]
         },
         {
             "tag": "q9",
@@ -309,7 +309,7 @@
         {
             "tag": "q21_t",
             "patterns": ["Whould you like to work over time or more hours?_t"],
-            "responses":[ "<button onclick=\"show_qtips(event)\">Whould you like to work over time or more hours?</button>"]
+            "responses":[ "<button class=\"chatbox-buttons\" onclick=\"show_qtips(event)\">Whould you like to work over time or more hours?</button>"]
         },
         {
             "tag": "q21",
@@ -327,7 +327,7 @@
         {
             "tag": "q14_t",
             "patterns": ["What is more important to you the money or the work?_t"],
-            "responses": ["<button onclick=\"show_qtips(event)\">What is more important to you the money or the work?</button>"]
+            "responses": ["<button class=\"chatbox-buttons\" onclick=\"show_qtips(event)\">What is more important to you the money or the work?</button>"]
         },
         {
             "tag": "q14",
@@ -345,7 +345,7 @@
         {
             "tag": "q8_t",
             "patterns":  ["What are your achievments in life?_t"],
-            "responses": ["<button onclick=\"show_qtips(event)\">What are your achievments in life?</button>"]
+            "responses": ["<button class=\"chatbox-buttons\" onclick=\"show_qtips(event)\">What are your achievments in life?</button>"]
         },
         {
             "tag": "q8",
@@ -363,7 +363,7 @@
         {
             "tag": "q1_t",
             "patterns": ["Are you applying for other jobs also?_t"],
-            "responses": ["<button onclick=\"show_qtips(event)\">Are you applying for other jobs also?</button>"]
+            "responses": ["<button class=\"chatbox-buttons\" onclick=\"show_qtips(event)\">Are you applying for other jobs also?</button>"]
         },
         {
             "tag": "q1",
@@ -381,7 +381,7 @@
         {
             "tag": "q13_t",
             "patterns": ["What does success mean to you?_t"],
-            "responses": ["<button onclick=\"show_qtips(event)\">What does success mean to you?</button>"]
+            "responses": ["<button class=\"chatbox-buttons\" onclick=\"show_qtips(event)\">What does success mean to you?</button>"]
         },
         {
             "tag": "q13",
@@ -399,7 +399,7 @@
         {
             "tag": "q3_t",
             "patterns": [ "Describe your self in one word._t"],
-            "responses": ["<button onclick=\"show_qtips(event)\">Describe your self in one word.</button>"]
+            "responses": ["<button class=\"chatbox-buttons\" onclick=\"show_qtips(event)\">Describe your self in one word.</button>"]
         },
         {
             "tag": "q3",
@@ -416,7 +416,7 @@
         {
             "tag": "q15_t",
             "patterns": ["What makes you angry?_t"],
-            "responses": ["<button onclick=\"show_qtips(event)\">What makes you angry?</button>"]
+            "responses": ["<button class=\"chatbox-buttons\" onclick=\"show_qtips(event)\">What makes you angry?</button>"]
         },
         {
             "tag": "q15",
@@ -433,7 +433,7 @@
         {
             "tag": "q16_t",
             "patterns":["What was the most difficult decision you have made in your past life?_t"],
-            "responses": ["<button onclick=\"show_qtips(event)\">What was the most difficult decision you have made in your past life?/button>"]
+            "responses": ["<button class=\"chatbox-buttons\" onclick=\"show_qtips(event)\">What was the most difficult decision you have made in your past life?/button>"]
         },
         {
             "tag": "q16",
@@ -450,7 +450,7 @@
         {
             "tag": "q5_t",
             "patterns": ["How do you deal with an angry customer?_t"],
-            "responses": ["<button onclick=\"show_qtips(event)\">How do you deal with an angry customer?</button>"]
+            "responses": ["<button class=\"chatbox-buttons\" onclick=\"show_qtips(event)\">How do you deal with an angry customer?</button>"]
         },
         {
             "tag": "q5",
@@ -467,7 +467,7 @@
         {
             "tag": "q2_t",
             "patterns": ["Describe 3 things that are most important to you in a job._t"],
-            "responses": ["<button onclick=\"show_qtips(event)\">Describe 3 things that are most important to you in a job.</button>"]
+            "responses": ["<button class=\"chatbox-buttons\" onclick=\"show_qtips(event)\">Describe 3 things that are most important to you in a job.</button>"]
         },
         {
             "tag": "q2",
@@ -484,7 +484,7 @@
         {
             "tag": "q22_t",
             "patterns": ["What would you change about your job?_t"],
-            "responses": ["<button onclick=\"show_qtips(event)\">What would you change about your job?</button>"]
+            "responses": ["<button class=\"chatbox-buttons\" onclick=\"show_qtips(event)\">What would you change about your job?</button>"]
         },
         {
             "tag": "q22",
@@ -502,7 +502,7 @@
         {
             "tag": "q23_t",
             "patterns": ["How would your previous boss describe you?_t"],
-            "responses": ["<button onclick=\"show_qtips(event)\">How would your previous boss describe you?</button>"]
+            "responses": ["<button class=\"chatbox-buttons\" onclick=\"show_qtips(event)\">How would your previous boss describe you?</button>"]
         },
         {
             "tag": "q23",
@@ -519,7 +519,7 @@
         {
             "tag": "q24_t",
             "patterns": ["What do you know about the company?_t"],
-            "responses":[ "<button onclick=\"show_qtips(event)\">What do you know about the company?</button>"]
+            "responses":[ "<button class=\"chatbox-buttons\" onclick=\"show_qtips(event)\">What do you know about the company?</button>"]
         },
         {
             "tag": "q24",
@@ -536,7 +536,7 @@
         {
             "tag": "q25_t",
             "patterns": ["Tell me about a mistake or failure you will never forget in your career and what did you learn about it._t"],
-            "responses": ["<button onclick=\"show_qtips(event)\">Tell me about a mistake or failure you will never forget in your career and what did you learn about it.</button>"]
+            "responses": ["<button class=\"chatbox-buttons\" onclick=\"show_qtips(event)\">Tell me about a mistake or failure you will never forget in your career and what did you learn about it.</button>"]
         },
         {
             "tag": "q25",
@@ -553,7 +553,7 @@
         {
             "tag": "q26_t",
             "patterns": ["How do you manage stress at work or life in general?_t"],
-            "responses": ["<button onclick=\"show_qtips(event)\">How do you manage stress at work or life in general?</button>"]
+            "responses": ["<button class=\"chatbox-buttons\" onclick=\"show_qtips(event)\">How do you manage stress at work or life in general?</button>"]
         },
         {
             "tag": "q26",
@@ -570,7 +570,7 @@
         {
             "tag": "q27_t",
             "patterns": ["What motivates you?_t"],
-            "responses":[ "<button onclick=\"show_qtips(event)\">What motivates you?</button>"]
+            "responses":[ "<button class=\"chatbox-buttons\" onclick=\"show_qtips(event)\">What motivates you?</button>"]
         },
         {
             "tag": "q27",
