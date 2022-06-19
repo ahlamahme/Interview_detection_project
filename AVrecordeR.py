@@ -5,7 +5,7 @@ import threading
 import time
 import subprocess
 import os
-
+from threading import RLock
 
 class VideoRecorder():
 	
@@ -25,6 +25,7 @@ class VideoRecorder():
 		self.video_out = cv2.VideoWriter(self.video_filename, self.video_writer, self.fps, self.frameSize)
 		self.frame_counts = 1
 		self.start_time = time.time()
+		self.lock = RLock()
 
 	
 	# Video starts being recorded 
@@ -38,19 +39,15 @@ class VideoRecorder():
 		while(self.open==True):
     			
 			
-			res = self.video_cap.getNextFrame()
-			video_frame = res[0]
-			ret = res[1]	
-			if (ret==True):
-				
-					self.video_out.write(video_frame)
+			#with self.lock:
+			video_frame = self.video_cap.getNextFrame()
+			self.video_out.write(video_frame)
 #					print str(counter) + " " + str(self.frame_counts) + " frames written " + str(timer_current)
-					self.frame_counts += 1
+			self.frame_counts += 1
 #					counter += 1
 #					timer_current = time.time() - timer_start
-					time.sleep(0.16)
-			else:
-				break
+			time.sleep(0.16)
+			
 				
 
 	# Finishes the video recording therefore the thread too
@@ -178,13 +175,13 @@ def stop_AVrecording(filename):
 		subprocess.call(cmd, shell=True)
 	
 		print ("Muxing")
-		cmd = "ffmpeg -ac 2 -channel_layout stereo -i " + filename+ "/temp_audio.wav -i " + filename+ "/temp_video2.avi -pix_fmt yuv420p " + filename+ "/final.avi"
+		cmd = "ffmpeg -ac 2 -channel_layout stereo -i " + filename+ "/temp_audio.wav -i " + filename+ "/temp_video2.avi -pix_fmt yuv420p " + filename+ "/final"+filename+".avi"
 		subprocess.call(cmd, shell=True)
 	
 	else:
 		
 		print( "Normal recording\nMuxing")
-		cmd = "ffmpeg -ac 2 -channel_layout stereo -i " + filename+ "/temp_audio.wav -i " + filename+ "/temp_video.avi -pix_fmt yuv420p "  + filename+ "/final.avi"
+		cmd = "ffmpeg -ac 2 -channel_layout stereo -i " + filename+ "/temp_audio.wav -i " + filename+ "/temp_video.avi -pix_fmt yuv420p "  + filename+ "/final"+filename+".avi"
 		subprocess.call(cmd, shell=True)
 
 		print ("..")

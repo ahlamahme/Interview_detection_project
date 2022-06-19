@@ -20,7 +20,7 @@ app.secret_key = "27eduCBA09"
 
 id = 0
 #session["uid"] = id
-parent_dir = "C:/Users/vip/Documents/Interview_detection_project-master/"
+parent_dir = "D:/hana/asu/spring2022/gp2/integrated/Interview_detection_project-master/"
 @app.route("/")
 def login():
     global id,parent_dir

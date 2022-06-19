@@ -17,7 +17,6 @@ import eye_detection
 from gaze_tracking import GazeTracking
 import stopwatch
 import keyboard
-from FER import lock
 from webcam import *
 
 stop_eye = False
@@ -49,7 +48,7 @@ class EYE():
     # We get a new frame from the webcam
      
         #lock.acquire()
-      self.frame=self.cap.getNextFrame()[0]
+      self.frame=self.cap.getNextFrame()
         #lock.release() 
       #print("out")
     

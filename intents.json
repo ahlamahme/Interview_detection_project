@@ -17,55 +17,17 @@
             ]
         },
 
-        {
-            "tag": "Interview Session",
+
+           {
+            "tag": " Session",
             "patterns": [
                 "Start an interview session",
                 "Interview session",
                 "Interview me"
             ],
             "responses": [
-
-                "I have two modes for interview session, either a standard mode with no guidance or a practice mode with guidance. In practice mode I will alert you to correct your posture. Please choose your preffered mode"
+                 "Hi! Please view this link: <a href='http://127.0.0.1:5000/session?_ijt=kt9alca9da380kdongcll54su'>click here</a>"
             ]
-        },
-        {
-            "tag": "Practice mode",
-            "patterns": [
-                "Choose practice mode",
-                "practice mode",
-                "practice",
-                "posture mode"
-            ],
-            "responses": [
-                "Please confirm that you are in a quiet place with no distractions and that you have good lighting (type in 'I confirm')"
-            ]
-        },
-        {
-            "tag": "Confirmation",
-            "patterns": [
-                "I confirm",
-                "good lighting and no distractions",
-                "confirmed",
-                "I confirm that i have good lighting and no distractions",
-                "ok",
-                "okay"
-            ],
-            "responses": [
-                "Allow access to microphone & webcam?"
-            ]
-        },
-        {
-            "tag": "Mic & webcam",
-            "patterns": [
-                "Allow access to mic and webcam",
-                "Allow access",
-                "Mic and webcam accessed",
-                "yes allow access",
-                "yes"
-            ],
-            "responses": ["Hi! Please view this link: <a href='http://127.0.0.1:5000/session?_ijt=kt9alca9da380kdongcll54su'>click here</a>"]
-
         },
 
         {
@@ -120,8 +82,8 @@
         {
             "tag": "q6",
             "patterns": [
-                
-                
+
+
                 "How do you deal with pressure or stressful situations?"
 
             ],
@@ -137,9 +99,9 @@
         {
             "tag": "q7",
             "patterns": [
-                
+
                 "Tell me about yourself"
-               
+
             ],
             "responses": [
                 "Try to cover your accomplishment in your answer.and talk about the work or project that resembles the requirement of the position.Also may need to Mention what led you to this point in your career and why the job is the perfect match for you.",
@@ -156,9 +118,9 @@
         {
             "tag": "q20",
             "patterns": [
-                
+
                 "Why do you want to work at this company?"
-                
+
             ],
             "responses": [
                 "Conduct thorough research of the company and company's top executive before facing interview.And you want to Learn about the company's vision and how you can contribute to it.",
@@ -173,9 +135,9 @@
         {
             "tag": "q4",
             "patterns": [
-                
+
                 "Do you consider yourself successful and why?"
-                
+
 
             ],
             "responses": [
@@ -193,9 +155,9 @@
         {
             "tag": "q10",
             "patterns": [
-                
+
                 "What are your greatest stengths?"
-                
+
 
             ],
             "responses": [
@@ -212,8 +174,8 @@
         {
             "tag": "q17",
             "patterns": [
-                
-               
+
+
                 "Where do you see yourself in 5 years?"
 
             ],
@@ -229,8 +191,8 @@
         {
             "tag": "q12",
             "patterns": [
-                
-                
+
+
                 "What do you consider to be your weaknesses?"
 
             ],
@@ -246,8 +208,8 @@
         {
             "tag": "q11",
             "patterns": [
-                
-                
+
+
                 "What are your salary expectations?"
 
             ],
@@ -263,8 +225,8 @@
         {
             "tag": "q18",
             "patterns": [
-                
-                
+
+
                 "Why are you the best person for this job?"
 
             ],
@@ -280,8 +242,8 @@
         {
             "tag": "q19",
             "patterns": [
-                
-                
+
+
                 "Why do you want this job?"
 
             ],
@@ -297,8 +259,8 @@
         {
             "tag": "q9",
             "patterns": [
-                
-                
+
+
                 "What are your career goals?"
 
             ],
@@ -314,8 +276,8 @@
         {
             "tag": "q21",
             "patterns": [
-                
-                
+
+
                 "Whould you like to work over time or more hours?"
 
             ],
@@ -332,8 +294,8 @@
         {
             "tag": "q14",
             "patterns": [
-                
-                
+
+
                 "What is more important to you the money or the work?"
 
             ],
@@ -350,8 +312,8 @@
         {
             "tag": "q8",
             "patterns": [
-                
-                
+
+
                 "What are your achievments in life?"
 
             ],
@@ -368,8 +330,8 @@
         {
             "tag": "q1",
             "patterns": [
-                
-                
+
+
                 "Are you applying for other jobs also?"
 
             ],
@@ -386,9 +348,9 @@
         {
             "tag": "q13",
             "patterns": [
-                
+
                 "What does success mean to you?"
-                
+
 
             ],
             "responses": [
@@ -404,9 +366,9 @@
         {
             "tag": "q3",
             "patterns": [
-                
+
                 "Describe your self in one word."
-               
+
 
             ],
             "responses": [
@@ -421,8 +383,8 @@
         {
             "tag": "q15",
             "patterns": [
-                
-                
+
+
                "What makes you angry?"
 
             ],
@@ -433,13 +395,13 @@
         {
             "tag": "q16_t",
             "patterns":["What was the most difficult decision you have made in your past life?_t"],
-            "responses": ["<button class=\"chatbox-buttons\" onclick=\"show_qtips(event)\">What was the most difficult decision you have made in your past life?/button>"]
+            "responses": ["<button class=\"chatbox-buttons\" onclick=\"show_qtips(event)\">What was the most difficult decision you have made in your past life?</button>"]
         },
         {
             "tag": "q16",
             "patterns": [
-                
-                
+
+
                 "What was the most difficult decision you have made in your past life?"
 
             ],
@@ -455,8 +417,8 @@
         {
             "tag": "q5",
             "patterns": [
-                
-                
+
+
                 "How do you deal with an angry customer?"
 
             ],
@@ -472,9 +434,9 @@
         {
             "tag": "q2",
             "patterns": [
-                
+
                 "Describe 3 things that are most important to you in a job."
-                
+
 
             ],
             "responses": [
@@ -489,10 +451,10 @@
         {
             "tag": "q22",
             "patterns": [
-                
+
                 "What would you change about your job?"
 
-                
+
 
             ],
             "responses": [
@@ -507,9 +469,9 @@
         {
             "tag": "q23",
             "patterns": [
-                
+
                 "How would your previous boss describe you?"
-                
+
 
             ],
             "responses": [
@@ -524,8 +486,8 @@
         {
             "tag": "q24",
             "patterns": [
-                
-                
+
+
                 "What do you know about the company?"
 
             ],
@@ -541,8 +503,8 @@
         {
             "tag": "q25",
             "patterns": [
-                
-                
+
+
                 "Tell me about a mistake or failure you will never forget in your career and what did you learn about it."
 
             ],
@@ -558,8 +520,8 @@
         {
             "tag": "q26",
             "patterns": [
-                
-                
+
+
                 "How do you manage stress at work or life in general?"
 
             ],

@@ -115,38 +115,41 @@
 </video>
 <textarea hidden id="repeat" rows="4" cols="50"></textarea>
 <textarea hidden id="ready" rows="4" cols="50"></textarea>
-<button id = "start_button"onclick="playPause()">Start Interview</button>
+<button id="start_button" onclick="playPause()">Start Interview</button>
 <element onload="start_session"></element>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 <script src="../static/harck.js"></script>
 <style>
     #start_button {
-      display: inline-block;
-      padding: 15px 25px;
-      font-size: 24px;
-      cursor: pointer;
-      text-align: center;
-      text-decoration: none;
-      outline: none;
-      color: #fff;
-      background-color:  #20000d;
-      border: none;
-      border-radius: 15px;
-      box-shadow: 0 7px #999;
-      margin-top:20%;
-      margin-bottom: 20%;
-      margin-left:43%;
-      margin-right:40%;
+        display: inline-block;
+        padding: 15px 25px;
+        font-size: 24px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        outline: none;
+        color: #fff;
+        background-color: #20000d;
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 7px #999;
+        margin-top: 20%;
+        margin-bottom: 20%;
+        margin-left: 43%;
+        margin-right: 40%;
     }
     
-    #start_button:hover {background-color: #20000d}
+    #start_button:hover {
+        background-color: #20000d
+    }
     
     #start_button:active {
-      background-color:  #20000d;
-      box-shadow: 0 5px #666;
-      transform: translateY(4px);
+        background-color: #20000d;
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
     }
-    </style>
+</style>
+
 <body style="background-image: url('../static/background.jpg'); background-repeat: no-repeat;background-size: cover; ">
     <script>
         function start_session() {
@@ -223,7 +226,7 @@
             }
 
             const s = JSON.stringify(qs_dict); // Stringify converts a JavaScript object or value to a JSON string
-           // window.alert(s)
+            // window.alert(s)
             $.ajax({
                 url: "/session_qs",
                 type: "POST",
@@ -285,19 +288,20 @@
             })
 
         }
+
         function Hide_button() {
-          var x = document.getElementById("start_button");
-            
+            var x = document.getElementById("start_button");
+
             x.style.display = "none";
-  
+
         }
 
         function end() {
-          
+
+            stop_eye();
             stop_record();
             stop_posture();
-            stop_eye();
-            
+            stop_speech();
             console.log("session ended");
             console.log("final", Content);
             Hide_button();
@@ -306,7 +310,7 @@
 
         }
         window.addEventListener('load', (event) => {
-           
+
             window.sessionStorage.setItem('u', "hana");
         });
         q_index = -1;
@@ -339,7 +343,7 @@
         function transcript() {
             let SpeechRecognition = window.webkitSpeechRecognition;
             let recognition = new SpeechRecognition();
-            recognition.continuous = true;
+            //recognition.continuous = true;
             recognition.start();
             let current;
             recognition.onresult = function(event) {
@@ -364,6 +368,7 @@
 
         function listen() {
             start_speech()
+            transcript()
             navigator.mediaDevices.getUserMedia({
                 audio: true
             }).then((stream) => {
@@ -381,7 +386,7 @@
                 }
 
                 function Ask() {
-                    stop_speech()
+                    //stop_speech()
                     pause_listening();
                     q = document.getElementById(qs[q_index]);
                     q.addEventListener('ended', listen, false);
@@ -395,6 +400,7 @@
                         speechEvents.stop();
                         console.log("finished answering this question");
                         stop_fer();
+                        stop_speech()
                         if (q_index === -1) {
                             if (ready.textContent === "false") {
                                 window.sessionStorage.setItem('ready', "false");

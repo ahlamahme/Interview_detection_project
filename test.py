@@ -1,7 +1,8 @@
 import cv2
 import time
 import pymsgbox
-from FER import lock
+from webcam import *
+import keyboard
 
 slouch = False
 count = 0
@@ -14,6 +15,7 @@ class Posture():
     def __init__(self,cap):
         self.video_capture = cap
         self.faceCascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+        self.count = 0
         
 
     def startPost(self,uid):
@@ -21,7 +23,7 @@ class Posture():
         print("enteringStartPost")
         while not(session_end):
            
-            frame=self.video_capture.getNextFrame()[0]
+            frame=self.video_capture.getNextFrame()
             gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
             # use appropriate flag based on version of OpenCV
             if int(cv2.__version__.split('.')[0]) >= 3:
@@ -48,13 +50,13 @@ class Posture():
                     print("No slouching detected")
             global t_last
             if slouch == True and time.time() - t_last > 10:
-                global count
-                cv2.imwrite(uid+"/frame%d.jpg" % slouch, frame)
-                count  +=  1
-                #pymsgbox.alert('Stop Slouching!', 'PostureFix')
+                cv2.imwrite(uid+"/frame%d.jpg" % self.count, frame)
+                self.count  +=  1                
                 t_last = time.time()
 
             time.sleep(0.5)
+            if keyboard.is_pressed ("esc")  :
+              self.stopPost()
         print("outofpostwhile")    
 
     def stopPost(self):
@@ -63,6 +65,9 @@ class Posture():
         self.video_capture.close()
 
 
+
+
 if __name__ == '__main__':
-    s= Posture(cv2.VideoCapture(0))
+    cap = VideoCamera(0)
+    s= Posture(cap)
     s.startPost("0")

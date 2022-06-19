@@ -2,7 +2,7 @@ from docx import Document
 import aspose.words as aw
 from docx.enum.text import WD_BREAK
 from docx.enum.text import WD_ALIGN_PARAGRAPH
-
+from docx.shared import Inches
 from volume_meter import *
 from docx2pdf import convert
 
@@ -92,7 +92,7 @@ def write_results(qs,uid,contact,mins,blinks,slouch):
 
         r.add_text("Now eyes analysis:")
         r.add_break(WD_BREAK.LINE)
-        r.add_picture('images/eye.jpg')
+        r.add_picture('static/images/eye.jpg')
         r.add_break(WD_BREAK.LINE)
 
         if contact>60:
@@ -118,7 +118,7 @@ def write_results(qs,uid,contact,mins,blinks,slouch):
         if slouch > 0:
             r.add_text("You were detected slouching " + str(slouch) +" times, and here is an evidence :p")
             r.add_break(WD_BREAK.LINE)
-            r.add_picture(uid+'/frame.jpg')
+            r.add_picture(uid+'/frame0.jpg',width=Inches(7.00), height=Inches(9.00) )
         else:
             r.add_text("Your posture showed that you were confident and engaged in the interview, Great Job." +str(slouch))
             r.add_break(WD_BREAK.LINE)
@@ -130,9 +130,9 @@ def write_results(qs,uid,contact,mins,blinks,slouch):
         r.add_break(WD_BREAK.LINE)
         r.add_text("We wish you good luck and good salary :)")
 
-        user_x.save(r'C:\Users\vip\Documents\Interview_detection_project-master\\'+ uid +'\\r.docx')
-        convert(r'C:\Users\vip\Documents\Interview_detection_project-master\\'+ uid +'\\r.docx')
-        print("Done ya hana")
+        user_x.save(r'C:\Users\vip\Documents\flaskProject2\\'+ uid +'\\r'+uid+'.docx')
+        convert(r'C:\Users\vip\Documents\flaskProject2\\'+ uid +'\\r'+uid+'.docx')
+        print("Done")
         return True
 
 

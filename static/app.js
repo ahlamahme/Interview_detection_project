@@ -67,7 +67,8 @@ class Chatbox {
     onEndSession(chatbox) {
         console.log("in if");
         var textField = document.querySelector('.fake__input');
-        let text1 = textField.textContent
+        let text1 = textField.textContent;
+        //let text1 = "hi"
         console.log("text1 is", text1)
         fetch('http://127.0.0.1:5000/predict', {
                 method: 'POST',

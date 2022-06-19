@@ -60,8 +60,8 @@ p1 = SER(path='SER_model.h5')
 sit = Posture(cap)
 eye = EYE(cap) 
 qa=""
-id = 10
-parent_dir = "C:/Users/vip/Documents/Interview_detection_project-master/"
+id = 11
+parent_dir = "C:/Users/vip/Documents/flaskProject2/"
 
 
 
@@ -81,9 +81,13 @@ def flask2js():
 
 @app.route('/session')
 def videos_get():
+    global cap
+    if not(cap.videoCap.isOpened()):
+        cap.openVideo(0)
     global id
     session['uid'] = str(id)
     id+=1
+    print("this is "+ str(id)+" from videos get \n")
     return render_template("videos (2).html")
 
 @app.route("/start_posture",methods = ['GET'])
@@ -139,19 +143,19 @@ def get_js():
     #5leena hena n compute kol so2al q eih text
     session['q0'] = QS_TEXT[qs_dict['0']]
     print(session['q0'])
-    qs_dict['q0']=session['q0']
+    qs_dict['0']=session['q0']
     session['q1'] = QS_TEXT[qs_dict['1']]
     print(session['q1'])
-    qs_dict['q1']=session['q1']
+    qs_dict['1']=session['q1']
     session['q2'] = QS_TEXT[qs_dict['2']]
     print(session['q2'])
-    qs_dict['q2']=session['q2']
+    qs_dict['2']=session['q2']
     session['q3'] = QS_TEXT[qs_dict['3']]
     print(session['q3'])
-    qs_dict['q3']=session['q3']
+    qs_dict['3']=session['q3']
     session['q4'] = QS_TEXT[qs_dict['4']]
     print(session['q4'])
-    qs_dict['q4']=session['q4']
+    qs_dict['4']=session['q4']
     return qs_dict
 
 @app.route("/speech", methods=['POST'])   
@@ -205,16 +209,42 @@ def s2t():
 
 @app.route('/dv')
 def download_video():
-    path= parent_dir+session['uid']+"/final.avi"# path of video
+    path= parent_dir+session['uid']+"/final"+session['uid']+".avi"# path of video
     print("user id from dv:",session['uid'])
     return send_file(path,as_attachment=True)
 
-@app.route('/dr')
+@app.route('/odr')
 def download_report():
+    path= parent_dir+session['uid']+"/r"+session['uid']+".pdf"#path of report
+    return send_file(path,as_attachment=True)
+
+@app.after_request
+def add_header(r):
+    """
+    Add headers to both force latest IE rendering engine or Chrome Frame,
+    and also to cache the rendered page for 10 minutes.
+    """
+    r.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    r.headers["Pragma"] = "no-cache"
+    r.headers["Expires"] = "0"
+    r.headers['Cache-Control'] = 'public, max-age=0'
+    return r
+
+@app.route('/dr')
+def gdownload_report():
+    print("inreport")
+    #I think el sa7 aktr tb2a goa kol fnc stop/qs
+    session['mins'] = res['session time']/60
+    session['contact']=res['eye contact']
+    session['blinks'] = res['blinks']
+    session['slouch'] = sit.count
+    print("beforesend",str(session['slouch']))
+    write_results(qs_dict,session['uid'],session['contact'],session['mins'],session['blinks'] ,session['slouch'])
+    print("aftersend",str(session['slouch']))
+    cap.close()
     print("user id from dr:",session['uid'])
-    path= parent_dir+session['uid']+"/r.pdf"#path of report
+    path= parent_dir+session['uid']+"/r"+session['uid']+".pdf"#path of report
     return send_file(path,as_attachment=True)
 
 if __name__ == '__main__':
     app.run(debug=False)
-

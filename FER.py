@@ -9,16 +9,18 @@ from multiprocessing import Lock, Process
 import keyboard
 import os
 import threading
+from threading import RLock
 os.environ['KMP_DUPLICATE_LIB_OK']='True'
 
 end_session=True
-lock = threading.Lock()
+
 class FER():
     def __init__(self,cap):
         self.emotion_labels = ['neutral', 'happiness', 'surprise', 'sadness', 'anger', 'disgust', 'fear']
         self.face_classifier = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
         self.total_predictions = []
         self.cap=cap
+        self.lock = RLock()
 
     def load_model(self):
         json_file = open('Saved-Models-facial/model8258.json', 'r')
@@ -29,8 +31,8 @@ class FER():
 
     def predict_emotion(self):
         #lock.acquire()
-        
-        frame= self.cap.getNextFrame()[0]
+        #with self.lock:
+        frame= self.cap.getNextFrame()
         #lock.release()  
         labels = []
         gray = cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
