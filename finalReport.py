@@ -118,7 +118,7 @@ def write_results(qs,uid,contact,mins,blinks,slouch):
         if slouch > 0:
             r.add_text("You were detected slouching " + str(slouch) +" times, and here is an evidence :p")
             r.add_break(WD_BREAK.LINE)
-            r.add_picture(uid+'/frame0.jpg',width=Inches(7.00), height=Inches(9.00) )
+            r.add_picture(uid+'/frame0.jpg',width=Inches(6.00), height=Inches(6.00) )
         else:
             r.add_text("Your posture showed that you were confident and engaged in the interview, Great Job." +str(slouch))
             r.add_break(WD_BREAK.LINE)
@@ -130,8 +130,8 @@ def write_results(qs,uid,contact,mins,blinks,slouch):
         r.add_break(WD_BREAK.LINE)
         r.add_text("We wish you good luck and good salary :)")
 
-        user_x.save(r'C:\Users\vip\Documents\flaskProject2\\'+ uid +'\\r'+uid+'.docx')
-        convert(r'C:\Users\vip\Documents\flaskProject2\\'+ uid +'\\r'+uid+'.docx')
+        user_x.save(r'C:\Users\vip\Documents\gp-master\\'+ uid +'\\r'+uid+'.docx')
+        convert(r'C:\Users\vip\Documents\gp-master\\'+ uid +'\\r'+uid+'.docx')
         print("Done")
         return True
 
