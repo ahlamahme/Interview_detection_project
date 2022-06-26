@@ -1,7 +1,9 @@
-# ARI
-This is graduation project at faculty of engineering ain shams that talk about how to make interview session and return the feedback to interviewee
+# Interview_detection_project
+This is a graduation project at faculty of engineering ain shams that talking about how to make interview session and return the feedback to interviewee.
+## ARI 
+ARI is name of our projects that refer to Artificial Resources Interview.
 ## User guide 
-follow these steps in this video to start the interview session
+follow these steps in this video to start the interview session:
 
 
 
