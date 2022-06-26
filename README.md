@@ -16,3 +16,5 @@ https://user-images.githubusercontent.com/52126542/175792227-dd5ba04b-0158-4837-
 
 ## How to start
 Using any IDE to run python and install all required packages and then clone the repo and just run app.py
+## The project team :
+[Alaa](https://github.com/alaaelmaghraby)
