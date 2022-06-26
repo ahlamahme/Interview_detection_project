@@ -17,4 +17,4 @@ https://user-images.githubusercontent.com/52126542/175792227-dd5ba04b-0158-4837-
 ## How to start
 Using any IDE to run python and install all required packages and then clone the repo and just run app.py
 ## The project team :
-[Alaa Maghraby](https://github.com/alaaelmaghraby) [Ahlam Gobran](https://github.com/ahlamahme) [Hana Nassef](https://github.com/333hana) [Nada  Omran](https://github.com/NadaOmran12) 
+[Alaa Maghraby](https://github.com/alaaelmaghraby)<br/> [Ahlam Gobran](https://github.com/ahlamahme)<br/> [Hana Nassef](https://github.com/333hana) <br/> [Nada  Omran](https://github.com/NadaOmran12) 
