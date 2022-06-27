@@ -96,16 +96,16 @@ def write_results(qs,uid,contact,mins,blinks,slouch):
         r.add_break(WD_BREAK.LINE)
 
         if contact>60:
-            ec= "your maintained good eye contact with interviewer for "+str(contact)+ " %"
+            ec= "your maintained good eye contact with interviewer for "+str(int(contact))+ " %"
         else:
-            ec= "your maintained bad eye contact with interviewer for "+str(contact)+ " %"  
+            ec= "your maintained bad eye contact with interviewer for "+str(int(contact))+ " %"  
 
         if blinks/mins < 8:
-            b = "you blinked "+str(blinks)+ " times in "+ str(mins) + " mins, that is less than an average human bieng, Not blinking normally can indicate discomfort or shock"
+            b = "you blinked "+str(blinks)+ " times in "+ str(int(mins)) + " mins, that is less than an average human bieng, Not blinking normally can indicate discomfort or shock"
         elif blinks/mins > 12:
-            b = "you blinked "+str(blinks)+ " times in "+ str(mins) + " mins, that is more than an average human bieng, Not blinking normally can indicate discomfort or shock"
+            b = "you blinked "+str(blinks)+ " times in "+ str(int(mins)) + " mins, that is more than an average human bieng, Not blinking normally can indicate discomfort or shock"
 
-        r.add_text("your interview session lasted for "+str(mins)+ " mins." )
+        r.add_text("your interview session lasted for "+str(int(mins))+ " mins." )
         r.add_break(WD_BREAK.LINE)
         r.add_text(ec)
         r.add_break(WD_BREAK.LINE)
